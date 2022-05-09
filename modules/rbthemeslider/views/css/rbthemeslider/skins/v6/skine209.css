@@ -1,0 +1,300 @@
+/**
+* 2007-2021 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2021 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+.rb-v6 .rb-nav-prev,
+.rb-v6 .rb-nav-next,
+.rb-v6 .rb-bottom-slidebuttons a,
+.rb-v6 .rb-nav-start,
+.rb-v6 .rb-nav-stop,
+.rb-v6 .rb-nav-prev:after,
+.rb-v6 .rb-nav-next:after,
+.rb-v6 .rb-playvideo,
+.rb-v6 .rb-playvideo:after {
+	transition: border .3s ease-in-out,
+				border-radius .2s ease-in-out,
+				background-color .3s ease-in-out,
+				-o-transform .2s ease-in-out,
+				-ms-transform .2s ease-in-out,
+				-moz-transform .2s ease-in-out,
+				-webkit-transform .2s ease-in-out,
+				transform .2s ease-in-out
+				!important;
+}
+
+.rb-v6 .rb-playvideo {
+	width: 50px;
+	height: 50px;
+	margin-left: -25px;
+	margin-top: -25px;
+}
+
+.rb-v6 .rb-playvideo:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	width: 26px;
+	height: 26px;
+	border: 3px solid transparent;
+	border-top: 3px solid rgba(255,255,255,0.75);
+	right: 20px;
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	border-right: 3px solid rgba(255,255,255,0.75);
+}
+
+.rb-v6 .rb-playvideo:hover {
+	-o-transform: scaleX(1.2) scaleY(.7);
+	-ms-transform: scaleX(1.2) scaleY(.7);
+	-moz-transform: scaleX(1.2) scaleY(.7);
+	-webkit-transform: scaleX(1.2) scaleY(.7);
+	transform: scaleX(1.2) scaleY(.7);
+}
+
+.rb-v6 .rb-playvideo:hover:after {
+	border-top-color: rgba(255,255,255,1) !important;
+	border-right-color: rgba(255,255,255,1) !important;
+}
+
+.rb-v6 .rb-nav-prev,
+.rb-v6 .rb-nav-next {
+	width: 50px;
+	height: 50px;
+	z-index: 10000;
+	top: 50%;
+	margin-top: -25px;
+	position: absolute;
+	border-radius: 25px;
+}
+
+.rb-v6 .rb-nav-prev:after,
+.rb-v6 .rb-nav-next:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	width: 26px;
+	height: 26px;
+	border: 3px solid transparent;
+	border-top: 3px solid rgba(255,255,255,0.75);
+}
+
+.rb-v6 .rb-nav-prev:after {
+	left: 20px;
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	border-left: 3px solid rgba(255,255,255,0.75);
+}
+
+.rb-v6 .rb-nav-next:after {
+	right: 20px;
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	border-right: 3px solid rgba(255,255,255,0.75);
+}
+
+.rb-v6 .rb-nav-prev:hover,
+.rb-v6 .rb-nav-next:hover {
+	-o-transform: scaleX(1.2) scaleY(.7);
+	-ms-transform: scaleX(1.2) scaleY(.7);
+	-moz-transform: scaleX(1.2) scaleY(.7);
+	-webkit-transform: scaleX(1.2) scaleY(.7);
+	transform: scaleX(1.2) scaleY(.7);
+}
+
+.rb-v6 .rb-nav-prev:hover:after {
+	border-top-color: rgba(255,255,255,1) !important;
+	border-left-color: rgba(255,255,255,1) !important;
+}
+
+.rb-v6 .rb-nav-next:hover:after {
+	border-top-color: rgba(255,255,255,1) !important;
+	border-right-color: rgba(255,255,255,1) !important;
+}
+
+.rb-v6 .rb-nav-prev {
+	left: 10px;
+}
+
+.rb-v6 .rb-nav-next {
+	right: 10px;
+}
+
+.rb-v6 .rb-bottom-slidebuttons a,
+.rb-v6 .rb-nav-sides {
+	margin: 0 5px;
+	width: 8px !important;
+	height: 8px;
+}
+
+.rb-v6 .rb-bottom-slidebuttons a {
+	border-radius: 10px;
+	border: 2px solid rgba(255,255,255,0.75) !important;
+}
+
+.rb-v6 .rb-bottom-slidebuttons a.rb-nav-active {
+	background-color: rgba(255,255,255,0.75);
+}
+
+.rb-v6 .rb-bottom-slidebuttons a:hover {
+	border: 2px solid rgba(255,255,255,1) !important;
+}
+
+.rb-v6 .rb-bottom-slidebuttons a.rb-nav-active:hover {
+	background-color: rgba(255,255,255,1) !important;
+}
+
+.rb-v6 .rb-nav-start:after {
+	position: absolute;
+	content: '';
+	width: 7px;
+	height: 7px;
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	border-top: 2px solid rgba(255,255,255,0.75);
+	border-right: 2px solid rgba(255,255,255,0.75);
+	left: -14px;
+	top: -10px;
+}
+
+.rb-v6 .rb-nav-start {
+	position: relative;
+	-o-transform: scaleX(1.5);
+	-ms-transform: scaleX(1.5);
+	-moz-transform: scaleX(1.5);
+	-webkit-transform: scaleX(1.5);
+	transform: scaleX(1.5);
+}
+
+.rb-v6 .rb-nav-start:hover:after,
+.rb-v6 .rb-nav-start-active:after {
+	border-top: 2px solid rgba(255,255,255,1);
+	border-right: 2px solid rgba(255,255,255,1);
+}
+
+.rb-v6 .rb-nav-stop {
+	border-left: 2px solid rgba(255,255,255,0.75) !important;
+	border-right: 2px solid rgba(255,255,255,0.75) !important;
+	width: 4px;
+	height: 12px;
+	margin-left: 5px;
+}
+
+.rb-v6 .rb-nav-stop:hover,
+.rb-v6 .rb-nav-stop-active {
+	border-left: 2px solid rgba(255,255,255,1) !important;
+	border-right: 2px solid rgba(255,255,255,1) !important;
+}
+
+.rb-v6 .rb-bottom-slidebuttons,
+.rb-v6 .rb-bottom-slidebuttons a,
+.rb-v6 .rb-nav-start,
+.rb-v6 .rb-nav-stop,
+.rb-v6 .rb-nav-sides {
+	display: inline-block !important;
+}
+
+.rb-v6 .rb-bottom-nav-wrapper {
+	top: -30px;
+}
+
+.rb-v6 .rb-nav-sides {
+	width: 0px;
+}
+
+.rb-v6 .rb-thumbnail-hover {
+	bottom: 30px;
+	padding: 2px;
+	margin-left: 7px;
+}
+
+.rb-v6 .rb-thumbnail-hover-bg {
+	background: #eee;
+	border-radius: 3px;
+}
+
+.rb-v6 .rb-thumbnail-hover span {
+	border: 5px solid #eee;
+	margin-left: -5px;
+}
+
+.rb-v6 .rb-thumbnail {
+	top: 10px;
+}
+
+.rb-v6 .rb-thumbnail-inner {
+	padding: 2px;
+	margin-left: -2px;
+	background: #fff;
+}
+
+.rb-v6 .rb-thumbnail-slide a {
+	margin-right: 2px;
+}
+
+.rb-v6 .rb-nothumb {
+	background: #eee;
+}
+
+.rb-v6 .rb-loading-container {
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	margin-top: -20px;
+	background-position: -450px -150px;
+}
+
+.rb-v6 .rb-loading-indicator {
+	width: 22px;
+	height: 22px;
+	margin-top: 9px;
+	background-image: url(../../../../img/rbthemeslider/skins/loading.gif);
+}
+
+.rb-v6 .rb-circle-timer {
+	top: 16px;
+	right: 16px;
+	width: 24px;
+	height: 24px;
+}
+
+.rb-v6 .rb-ct-half,
+.rb-v6 .rb-ct-center {
+	border-width: 2px;
+}
