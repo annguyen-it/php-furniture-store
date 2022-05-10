@@ -1,44 +1,4 @@
 $(document).ready(function () {
-	cat();
-	brand();
-	product();
-	//cat() is a funtion fetching category record from database whenever page is load
-	function cat() {
-		$.ajax({
-			url: "action.php",
-			method: "POST",
-			data: { category: 1 },
-			success: function (data) {
-				$("#get_category").html(data);
-
-			}
-		});
-	}
-	//brand() is a funtion fetching brand record from database whenever page is load
-	function brand() {
-		$.ajax({
-			url: "action.php",
-			method: "POST",
-			data: { brand: 1 },
-			success: function (data) {
-				$("#get_brand").html(data);
-			}
-		});
-	}
-	//product() is a funtion fetching product record from database whenever page is load
-	// function product() {
-	// 	$.ajax({
-	// 		url: "action.php",
-	// 		method: "POST",
-	// 		data: { getProduct: 1 },
-	// 		success: function (data) {
-	// 			$("#get_product").html(data);
-	// 		}
-	// 	});
-	// }
-	/*	when page is load successfully then there is a list of categories when user click on category we will get category id and 
-		according to id we will show products
-	*/
 	$("body").delegate(".category", "click", function (event) {
 		$("#get_product").html("<h3>Loading...</h3>");
 		event.preventDefault();
@@ -55,7 +15,6 @@ $(document).ready(function () {
 				}
 			}
 		});
-
 	});
 
 	/*	when page is load successfully then there is a list of brands when user click on brand we will get brand id and 
@@ -77,7 +36,6 @@ $(document).ready(function () {
 				}
 			}
 		});
-
 	});
 	/*
 		At the top of page there is a search box with search button when user put name of product then we will take the user 
@@ -265,7 +223,6 @@ $(document).ready(function () {
 
 
 	});
-	checkOutDetails();
 	net_total();
 	/*
 		checkOutDetails() function work for two purposes
@@ -306,17 +263,6 @@ $(document).ready(function () {
 
 	//remove product from cart
 
-	page();
-	function page() {
-		$.ajax({
-			url: "action.php",
-			method: "POST",
-			data: { page: 1 },
-			success: function (data) {
-				$("#pageno").html(data);
-			}
-		});
-	}
 	$("body").delegate("#page", "click", function () {
 		var pn = $(this).attr("page");
 		$.ajax({
