@@ -1410,6 +1410,37 @@ include "db.php";
 																		<div class="rb-widget-container">
 																			<div class="rb-image-carousel-wrapper rb-slick-slider">
 																				<div class="rb-image-carousel slick-arrows-inside" data-slider_options='{"responsive":[{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}],"slidesToShow":3,"slidesToScroll":1,"autoplaySpeed":5000,"autoplay":false,"infinite":true,"pauseOnHover":false,"arrows":true,"dots":false}'>
+																					<?php
+
+																					$query = 'select cat_id, cat_title, product_image from products
+																					join categories c ON products.product_cat = c.cat_id
+																					GROUP BY cat_id
+																					';
+
+																					$run_query = mysqli_query($con, $query);
+																					if (mysqli_num_rows($run_query) > 0) {
+																						while ($row = mysqli_fetch_array($run_query)) {
+																							$cat_id    = $row['cat_id'];
+																							$cat_title = $row['cat_title'];
+																							$pro_image = $row['product_image'];
+
+																					?>
+
+																							<div>
+																								<div class="slick-slide-inner">
+																									<a href="#"><img class="slick-slide-image" data-lazy="./product_images/<?= $pro_image ?>" />
+																										<div class="rb-image-loading"></div>
+																									</a>
+																									<div><?= $cat_title ?></div>
+																								</div>
+																							</div>
+
+																					<?php
+																						}
+																					}
+
+																					?>
+
 																					<div>
 																						<div class="slick-slide-inner">
 																							<a href="#"><img class="slick-slide-image" data-lazy="./cdn.shopify.com/s/files/1/0550/8336/8541/files/12015.jpg?v=1636000765" />
