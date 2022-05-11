@@ -17,9 +17,7 @@ include "db.php";
 	<script src="js/jquery2.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="main.js"></script>
-
 	<link rel="stylesheet" href="./css/theme.css" type="text/css" media="all" />
-
 	<style>
 		@media screen and (max-width:480px) {
 			#search {
@@ -34,7 +32,6 @@ include "db.php";
 			}
 		}
 	</style>
-
 	<style>
 		.rb_megamenu .rb_menus_li h4,
 		.rb_megamenu .rb_menus_li h5,
@@ -63,9 +60,6 @@ include "db.php";
 		@media (min-width: 768px) {
 
 			/*layout 1*/
-			.rb_megamenu.layout_layout1 {
-				background: ;
-			}
 
 			.layout_layout1 .rb_megamenu_content {
 				background: linear-gradient(#ffffff, #f2f2f2) repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -73,107 +67,9 @@ include "db.php";
 				background: -o-linear-gradient(#ffffff, #f2f2f2) repeat scroll 0 0 rgba(0, 0, 0, 0);
 			}
 
-			.rb_megamenu.layout_layout1:not(.ybc_vertical_menu) .rb_menus_ul {
-				background: ;
-			}
-
-			#header .layout_layout1:not(.ybc_vertical_menu) .rb_menus_li>a,
-			.layout_layout1 .ybc-menu-vertical-button,
-			.layout_layout1 .rb_extra_item * {
-				color: ;
-			}
-
-			.layout_layout1 .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar {
-				background-color: ;
-			}
-
-			.layout_layout1 .rb_menus_li:hover>a,
-			.layout_layout1 .rb_menus_li.active>a,
-			#header .layout_layout1 .rb_menus_li:hover>a,
-			.layout_layout1:hover .ybc-menu-vertical-button,
-			.layout_layout1 .rb_extra_item button[type="submit"]:hover i,
-			#header .layout_layout1 .rb_menus_li.active>a {
-				color: ;
-			}
-
-			.layout_layout1:not(.ybc_vertical_menu) .rb_menus_li>a:before,
-			.layout_layout1.ybc_vertical_menu:hover .ybc-menu-vertical-button:before,
-			.layout_layout1:hover .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar,
-			.ybc-menu-vertical-button.layout_layout1:hover {
-				background-color: ;
-			}
-
-			.layout_layout1:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			.rb_megamenu.layout_layout1.ybc_vertical_menu:hover,
-			#header .layout_layout1:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			.rb_megamenu.layout_layout1.ybc_vertical_menu:hover {
-				background: ;
-			}
-
-			.layout_layout1.rb_megamenu .rb_columns_ul,
-			.layout_layout1.ybc_vertical_menu .rb_menus_ul {
-				background-color: ;
-			}
-
-			#header .layout_layout1 .rb_block_content a,
-			#header .layout_layout1 .rb_block_content p,
-			.layout_layout1.ybc_vertical_menu .rb_menus_li>a,
-			#header .layout_layout1.ybc_vertical_menu .rb_menus_li>a {
-				color: ;
-			}
-
-			.layout_layout1 .rb_columns_ul h1,
-			.layout_layout1 .rb_columns_ul h2,
-			.layout_layout1 .rb_columns_ul h3,
-			.layout_layout1 .rb_columns_ul h4,
-			.layout_layout1 .rb_columns_ul h5,
-			.layout_layout1 .rb_columns_ul h6,
-			.layout_layout1 .rb_columns_ul .rb_block>h1 a,
-			.layout_layout1 .rb_columns_ul .rb_block>h2 a,
-			.layout_layout1 .rb_columns_ul .rb_block>h3 a,
-			.layout_layout1 .rb_columns_ul .rb_block>h4 a,
-			.layout_layout1 .rb_columns_ul .rb_block>h5 a,
-			.layout_layout1 .rb_columns_ul .rb_block>h6 a,
-			#header .layout_layout1 .rb_columns_ul .rb_block>h1 a,
-			#header .layout_layout1 .rb_columns_ul .rb_block>h2 a,
-			#header .layout_layout1 .rb_columns_ul .rb_block>h3 a,
-			#header .layout_layout1 .rb_columns_ul .rb_block>h4 a,
-			#header .layout_layout1 .rb_columns_ul .rb_block>h5 a,
-			#header .layout_layout1 .rb_columns_ul .rb_block>h6 a,
-			.layout_layout1 .rb_columns_ul .h1,
-			.layout_layout1 .rb_columns_ul .h2,
-			.layout_layout1 .rb_columns_ul .h3,
-			.layout_layout1 .rb_columns_ul .h4,
-			.layout_layout1 .rb_columns_ul .h5,
-			.layout_layout1 .rb_columns_ul .h6 {
-				color: ;
-			}
-
-			.layout_layout1 li:hover>a,
-			.layout_layout1 li>a:hover,
-			.layout_layout1 .rb_tabs_li.open .rb_tab_toggle_title,
-			.layout_layout1 .rb_tabs_li.open .rb_tab_toggle_title a,
-			.layout_layout1 .rb_tabs_li:hover .rb_tab_toggle_title,
-			.layout_layout1 .rb_tabs_li:hover .rb_tab_toggle_title a,
-			#header .layout_layout1 .rb_tabs_li.open .rb_tab_toggle_title,
-			#header .layout_layout1 .rb_tabs_li.open .rb_tab_toggle_title a,
-			#header .layout_layout1 .rb_tabs_li:hover .rb_tab_toggle_title,
-			#header .layout_layout1 .rb_tabs_li:hover .rb_tab_toggle_title a,
-			.layout_layout1.ybc_vertical_menu .rb_menus_li>a,
-			#header .layout_layout1 li:hover>a,
-			.layout_layout1.ybc_vertical_menu .rb_menus_li:hover>a,
-			#header .layout_layout1.ybc_vertical_menu .rb_menus_li:hover>a,
-			#header .layout_layout1 .rb_columns_ul .rb_block_type_product .product-title>a:hover,
-			#header .layout_layout1 li>a:hover {
-				color: ;
-			}
-
 			/*end layout 1*/
 
 			/*layout 2*/
-			.rb_megamenu.layout_layout2 {
-				background-color: ;
-			}
 
 			#header .layout_layout2:not(.ybc_vertical_menu) .rb_menus_li>a,
 			.layout_layout2 .ybc-menu-vertical-button,
@@ -183,83 +79,6 @@ include "db.php";
 
 			.layout_layout2 .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar {
 				background-color: #000000;
-			}
-
-			.layout_layout2:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			.layout_layout2:not(.ybc_vertical_menu) .rb_menus_li.active>a,
-			#header .layout_layout2:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			.layout_layout2:hover .ybc-menu-vertical-button,
-			.layout_layout2 .rb_extra_item button[type="submit"]:hover i,
-			#header .layout_layout2:not(.ybc_vertical_menu) .rb_menus_li.active>a {
-				color: ;
-			}
-
-			.layout_layout2:hover .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar {
-				background-color: ;
-			}
-
-			.layout_layout2:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			#header .layout_layout2:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			.rb_megamenu.layout_layout2.ybc_vertical_menu:hover {
-				background-color: ;
-			}
-
-			.layout_layout2.rb_megamenu .rb_columns_ul,
-			.layout_layout2.ybc_vertical_menu .rb_menus_ul {
-				background-color: ;
-			}
-
-			#header .layout_layout2 .rb_block_content a,
-			.layout_layout2.ybc_vertical_menu .rb_menus_li>a,
-			#header .layout_layout2.ybc_vertical_menu .rb_menus_li>a,
-			#header .layout_layout2 .rb_block_content p {
-				color: ;
-			}
-
-			.layout_layout2 .rb_columns_ul h1,
-			.layout_layout2 .rb_columns_ul h2,
-			.layout_layout2 .rb_columns_ul h3,
-			.layout_layout2 .rb_columns_ul h4,
-			.layout_layout2 .rb_columns_ul h5,
-			.layout_layout2 .rb_columns_ul h6,
-			.layout_layout2 .rb_columns_ul .rb_block>h1 a,
-			.layout_layout2 .rb_columns_ul .rb_block>h2 a,
-			.layout_layout2 .rb_columns_ul .rb_block>h3 a,
-			.layout_layout2 .rb_columns_ul .rb_block>h4 a,
-			.layout_layout2 .rb_columns_ul .rb_block>h5 a,
-			.layout_layout2 .rb_columns_ul .rb_block>h6 a,
-			#header .layout_layout2 .rb_columns_ul .rb_block>h1 a,
-			#header .layout_layout2 .rb_columns_ul .rb_block>h2 a,
-			#header .layout_layout2 .rb_columns_ul .rb_block>h3 a,
-			#header .layout_layout2 .rb_columns_ul .rb_block>h4 a,
-			#header .layout_layout2 .rb_columns_ul .rb_block>h5 a,
-			#header .layout_layout2 .rb_columns_ul .rb_block>h6 a,
-			.layout_layout2 .rb_columns_ul .h1,
-			.layout_layout2 .rb_columns_ul .h2,
-			.layout_layout2 .rb_columns_ul .h3,
-			.layout_layout2 .rb_columns_ul .h4,
-			.layout_layout2 .rb_columns_ul .h5,
-			.layout_layout2 .rb_columns_ul .h6 {
-				color: ;
-			}
-
-			.layout_layout2 li:hover>a,
-			.layout_layout2 li>a:hover,
-			.layout_layout2 .rb_tabs_li.open .rb_tab_toggle_title,
-			.layout_layout2 .rb_tabs_li.open .rb_tab_toggle_title a,
-			.layout_layout2 .rb_tabs_li:hover .rb_tab_toggle_title,
-			.layout_layout2 .rb_tabs_li:hover .rb_tab_toggle_title a,
-			#header .layout_layout2 .rb_tabs_li.open .rb_tab_toggle_title,
-			#header .layout_layout2 .rb_tabs_li.open .rb_tab_toggle_title a,
-			#header .layout_layout2 .rb_tabs_li:hover .rb_tab_toggle_title,
-			#header .layout_layout2 .rb_tabs_li:hover .rb_tab_toggle_title a,
-			#header .layout_layout2 li:hover>a,
-			.layout_layout2.ybc_vertical_menu .rb_menus_li>a,
-			.layout_layout2.ybc_vertical_menu .rb_menus_li:hover>a,
-			#header .layout_layout2.ybc_vertical_menu .rb_menus_li:hover>a,
-			#header .layout_layout2 .rb_columns_ul .rb_block_type_product .product-title>a:hover,
-			#header .layout_layout2 li>a:hover {
-				color: ;
 			}
 
 			/*layout 3*/
@@ -363,7 +182,6 @@ include "db.php";
 			}
 
 			/*layout 4*/
-
 			.rb_megamenu.layout_layout4 {
 				background-color: #ffffff;
 			}
@@ -472,7 +290,6 @@ include "db.php";
 			}
 
 			/* end layout 4*/
-
 			/* Layout 5*/
 			.rb_megamenu.layout_layout5 {
 				background-color: #f6f6f6;
@@ -507,13 +324,6 @@ include "db.php";
 
 			.layout_layout5 .rb_menus_li>a:before {
 				background-color: #ec4249;
-			}
-
-			.layout_layout5:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			#header .layout_layout5:not(.ybc_vertical_menu) .rb_menus_li:hover>a,
-			.rb_megamenu.layout_layout5.ybc_vertical_menu:hover,
-			#header .layout_layout5 .rb_menus_li:hover>a {
-				background-color: ;
 			}
 
 			.layout_layout5.rb_megamenu .rb_columns_ul,
@@ -583,7 +393,6 @@ include "db.php";
 			.ybc-menu-vertical-button,
 			.transition_floating .close_menu,
 			.transition_full .close_menu {
-				background-color: ;
 				color: #ffffff;
 			}
 
@@ -602,54 +411,7 @@ include "db.php";
 				border-color: #ffffff;
 			}
 
-			.layout_layout1 .rb_menus_li:hover>a,
-			#header .layout_layout1 .rb_menus_li:hover>a {
-				color: ;
-			}
-
-			.layout_layout1 .rb_has_sub.rb_menus_li:hover .arrow::before {
-				/*border-color: ;*/
-			}
-
-			.layout_layout1 .rb_menus_li:hover>a,
-			#header .layout_layout1 .rb_menus_li:hover>a {
-				background-color: ;
-			}
-
-			.layout_layout1 li:hover>a,
-			.layout_layout1 li>a:hover,
-			#header .layout_layout1 li:hover>a,
-			#header .layout_layout1 .rb_columns_ul .rb_block_type_product .product-title>a:hover,
-			#header .layout_layout1 li>a:hover {
-				color: ;
-			}
-
 			/*------------------------------------------------------*/
-
-			.layout_layout2 .rb_menus_li:hover>a,
-			#header .layout_layout2 .rb_menus_li:hover>a {
-				color: ;
-			}
-
-			.layout_layout2 .rb_has_sub.rb_menus_li:hover .arrow::before {
-				border-color: ;
-			}
-
-			.layout_layout2 .rb_menus_li:hover>a,
-			#header .layout_layout2 .rb_menus_li:hover>a {
-				background-color: ;
-			}
-
-			.layout_layout2 li:hover>a,
-			.layout_layout2 li>a:hover,
-			#header .layout_layout2 li:hover>a,
-			#header .layout_layout2 .rb_columns_ul .rb_block_type_product .product-title>a:hover,
-			#header .layout_layout2 li>a:hover {
-				color: ;
-			}
-
-			/*------------------------------------------------------*/
-
 			.layout_layout3 .rb_menus_li:hover>a,
 			#header .layout_layout3 .rb_menus_li:hover>a {
 				color: #ffffff;
@@ -675,7 +437,6 @@ include "db.php";
 			}
 
 			/*------------------------------------------------------*/
-
 			.layout_layout4 .rb_menus_li:hover>a,
 			#header .layout_layout4 .rb_menus_li:hover>a {
 				color: #ffffff;
@@ -699,7 +460,6 @@ include "db.php";
 			}
 
 			/*------------------------------------------------------*/
-
 			.layout_layout5 .rb_menus_li:hover>a,
 			#header .layout_layout5 .rb_menus_li:hover>a {
 				color: #ec4249;
@@ -707,11 +467,6 @@ include "db.php";
 
 			.layout_layout5 .rb_has_sub.rb_menus_li:hover .arrow::before {
 				border-color: #ec4249;
-			}
-
-			.layout_layout5 .rb_menus_li:hover>a,
-			#header .layout_layout5 .rb_menus_li:hover>a {
-				background-color: ;
 			}
 
 			.layout_layout5 li:hover>a,
@@ -747,7 +502,14 @@ include "db.php";
 					<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Search</button></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span></a>
+					<li>
+						<a href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+							Cart
+							<span class="badge">
+								<?php include_once('./common/count_item.php') ?>
+							</span>
+						</a>
 						<div class="dropdown-menu" style="width:400px;">
 							<div class="panel panel-success">
 								<div class="panel-heading">
@@ -760,12 +522,7 @@ include "db.php";
 								</div>
 								<div class="panel-body">
 									<div id="cart_product">
-										<!--<div class="row">
-									<div class="col-md-3">Sl.No</div>
-									<div class="col-md-3">Product Image</div>
-									<div class="col-md-3">Product Name</div>
-									<div class="col-md-3">Price in $.</div>
-								</div>-->
+										<?php include_once('./common/cart_item.php') ?>
 									</div>
 								</div>
 								<div class="panel-footer"></div>
@@ -778,11 +535,9 @@ include "db.php";
 							<li class="divider"></li>
 							<li><a href="customer_order.php" style="text-decoration:none; color:black;">Orders</a></li>
 							<li class="divider"></li>
-
 							<li><a href="logout.php" style="text-decoration:none; color:black;">Logout</a></li>
 						</ul>
 					</li>
-
 				</ul>
 			</div>
 		</div>
@@ -795,6 +550,25 @@ include "db.php";
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<div id="get_category">
+					<div class='nav nav-pills nav-stacked'>
+						<li class='active'><a href='#'>
+								<h4>Product Categories</h4>
+							</a>
+						</li>
+
+						<?php
+						$category_query = "SELECT * FROM categories";
+						$run_query = mysqli_query($con, $category_query) or die(mysqli_error($con));
+						if (mysqli_num_rows($run_query) > 0) {
+							while ($row = mysqli_fetch_array($run_query)) {
+								$cid = $row["cat_id"];
+								$cat_name = $row["cat_title"];
+						?>
+								<li><a href='#' class='category' cid='<?php $cid ?>'><?= $cat_name ?></a></li>
+						<?php
+							}
+						} ?>
+					</div>
 				</div>
 				<!--<div class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"><h4>Categories</h4></a></li>
@@ -804,6 +578,27 @@ include "db.php";
 					<li><a href="#">Categories</a></li>
 				</div> -->
 				<div id="get_brand">
+					<div class='nav nav-pills nav-stacked'>
+						<li class='active'><a href='#'>
+								<h4>Brands</h4>
+							</a>
+						</li>
+						<?php
+
+						$brand_query = "SELECT * FROM brands";
+						$run_query = mysqli_query($con, $brand_query);
+						if (mysqli_num_rows($run_query) > 0) {
+							while ($row = mysqli_fetch_array($run_query)) {
+								$bid = $row["brand_id"];
+								$brand_name = $row["brand_title"];
+						?>
+								<li><a href='#' class='selectBrand' bid='$bid'><?= $brand_name ?></a></li>
+						<?php
+							}
+						}
+						?>
+
+					</div>
 				</div>
 				<!--<div class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"><h4>Brand</h4></a></li>
@@ -821,27 +616,25 @@ include "db.php";
 				<div class="panel panel-info" id="scroll">
 					<div class="panel-heading">Products</div>
 					<div class="panel-body">
-						<div id="get_product">
-
-							<?php
-							$limit = 9;
-							if (isset($_POST["setPage"])) {
-								$pageno = $_POST["pageNumber"];
-								$start = ($pageno * $limit) - $limit;
-							} else {
-								$start = 0;
-							}
-							$product_query = "SELECT * FROM products LIMIT $start,$limit";
-							$run_query = mysqli_query($con, $product_query);
-							if (mysqli_num_rows($run_query) > 0) {
-								while ($row = mysqli_fetch_array($run_query)) {
-									$pro_id    = $row['product_id'];
-									$pro_cat   = $row['product_cat'];
-									$pro_brand = $row['product_brand'];
-									$pro_title = $row['product_title'];
-									$pro_price = $row['product_price'];
-									$pro_image = $row['product_image'];
-									echo "
+						<div id="get_product"> <?php
+																		$limit = 9;
+																		if (isset($_POST["setPage"])) {
+																			$pageno = $_POST["pageNumber"];
+																			$start = ($pageno * $limit) - $limit;
+																		} else {
+																			$start = 0;
+																		}
+																		$product_query = "SELECT * FROM products LIMIT $start,$limit";
+																		$run_query = mysqli_query($con, $product_query);
+																		if (mysqli_num_rows($run_query) > 0) {
+																			while ($row = mysqli_fetch_array($run_query)) {
+																				$pro_id    = $row['product_id'];
+																				$pro_cat   = $row['product_cat'];
+																				$pro_brand = $row['product_brand'];
+																				$pro_title = $row['product_title'];
+																				$pro_price = $row['product_price'];
+																				$pro_image = $row['product_image'];
+																				echo "
 				<div class='col-md-4'>
 							<div class='panel panel-info'>
 								<div class='panel-heading'>$pro_title</div>
@@ -854,12 +647,11 @@ include "db.php";
 							</div>
 						</div>	
 			";
-								}
-							}
-							?>
+																			}
+																		}
+																		?>
 							<!--Here we get product jquery Ajax Request-->
 						</div>
-
 						<!--<div class="col-md-4">
 							<div class="panel panel-info">
 								<div class="panel-heading">Samsung Galaxy</div>
@@ -872,7 +664,6 @@ include "db.php";
 							</div>
 						</div> -->
 					</div>
-					
 					<div class="panel-footer">&copy; <?php echo date("Y"); ?></div>
 				</div>
 			</div>
@@ -882,14 +673,27 @@ include "db.php";
 			<div class="col-md-12">
 				<center>
 					<ul class="pagination" id="pageno">
-						<li><a href="#">1</a></li>
+						<?php
+
+						$sql = "SELECT * FROM products";
+						$run_query = mysqli_query($con, $sql);
+						$count = mysqli_num_rows($run_query);
+						$page_number = ceil($count / 9);
+						for ($i = 1; $i <= $page_number; $i++) {
+						?>
+							<li><a href='#' page='$i' id='page'><?= $i ?></a></li>
+						<?php
+						}
+						?>
 					</ul>
 				</center>
 			</div>
 		</div>
 	</div>
 
-	
+	<script>
+		var CURRENCY = '<?php echo CURRENCY; ?>';
+	</script>
 </body>
 
 </html>
