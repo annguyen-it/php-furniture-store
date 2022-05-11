@@ -1567,7 +1567,19 @@ include "db.php";
 																							} else {
 																								$start = 0;
 																							}
-																							$product_query = "SELECT * FROM products LIMIT $start,$limit";
+																							$product_query = "SELECT p.product_id,
+																																				product_cat,
+																																				product_brand,
+																																				product_title,
+																																				product_price,
+																																				product_qty,
+																																				product_desc,
+																																				product_keywords,
+																																				product_image
+																																 FROM products p
+																																			LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+																																								ON pi.product_id = p.product_id
+																																 LIMIT 0,9";
 																							$run_query = mysqli_query($con, $product_query);
 																							if (mysqli_num_rows($run_query) > 0) {
 																								while ($row = mysqli_fetch_array($run_query)) {
@@ -1596,7 +1608,19 @@ include "db.php";
 																							} else {
 																								$start = 0;
 																							}
-																							$product_query = "SELECT * FROM products LIMIT $start,$limit";
+																							$product_query = "SELECT p.product_id,
+																																				product_cat,
+																																				product_brand,
+																																				product_title,
+																																				product_price,
+																																				product_qty,
+																																				product_desc,
+																																				product_keywords,
+																																				product_image
+																																 FROM products p
+																																			LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+																																								ON pi.product_id = p.product_id
+																																 LIMIT 0,9";
 																							$run_query = mysqli_query($con, $product_query);
 																							if (mysqli_num_rows($run_query) > 0) {
 																								while ($row = mysqli_fetch_array($run_query)) {
@@ -1625,7 +1649,19 @@ include "db.php";
 																							} else {
 																								$start = 0;
 																							}
-																							$product_query = "SELECT * FROM products LIMIT $start,$limit";
+																							$product_query = "SELECT p.product_id,
+																																				product_cat,
+																																				product_brand,
+																																				product_title,
+																																				product_price,
+																																				product_qty,
+																																				product_desc,
+																																				product_keywords,
+																																				product_image
+																																 FROM products p
+																																			LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+																																								ON pi.product_id = p.product_id
+																																 LIMIT 0,9";
 																							$run_query = mysqli_query($con, $product_query);
 																							if (mysqli_num_rows($run_query) > 0) {
 																								while ($row = mysqli_fetch_array($run_query)) {
