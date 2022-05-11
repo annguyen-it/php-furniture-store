@@ -906,6 +906,8 @@ include "db.php";
 			}
 		}
 	</script>
+	<script src="js/jquery2.js"></script>
+	<script src="main.js"></script>
 </head>
 
 <body id="index" class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled home-1">
