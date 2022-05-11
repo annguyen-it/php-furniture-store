@@ -110,7 +110,7 @@
         		<div class="col-12">
         			<div class="form-group">
 		        		<label>Product Image <small>(format: jpg, jpeg, png)</small></label>
-		        		<input type="file" name="product_image" class="form-control">
+		        		<input type="file" name="product_image[]" class="form-control" multiple>
 		        	</div>
         		</div>
         		<input type="hidden" name="add_product" value="1">
@@ -131,7 +131,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -188,14 +188,14 @@
             <div class="col-12">
               <div class="form-group">
                 <label>Product Image <small>(format: jpg, jpeg, png)</small></label>
-                <input type="file" name="e_product_image" class="form-control">
-                <img src="../product_images/1.0x0.jpg" class="img-fluid" width="50">
+                <input type="file" name="e_product_image[]" class="form-control" multiple>
+                <img class="img-fluid" width="50">
               </div>
             </div>
             <input type="hidden" name="pid">
             <input type="hidden" name="edit_product" value="1">
             <div class="col-12">
-              <button type="button" class="btn btn-primary submit-edit-product">Add Product</button>
+              <button type="button" class="btn btn-primary submit-edit-product">Confirm</button>
             </div>
           </div>
           
@@ -207,7 +207,5 @@
 <!-- Edit Product Modal end -->
 
 <?php include_once("./templates/footer.php"); ?>
-
-
 
 <script type="text/javascript" src="./js/products.js"></script>

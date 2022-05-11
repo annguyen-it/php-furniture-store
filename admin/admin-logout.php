@@ -5,9 +5,6 @@ session_start();
 if (isset($_SESSION["admin_id"])) {
 	session_destroy();
 	header("location:login.php");
-}else{
+} else {
 	header("location:index.php");
 }
-
-
-?>
