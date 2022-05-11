@@ -102,9 +102,6 @@ $(document).ready(function(){
 		}else{
 			alert('Cancelled');
 		}
-
-		
-
 	});
 
 });

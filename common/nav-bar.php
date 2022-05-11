@@ -987,32 +987,31 @@
               </div>
 
               <div class="form-wrap">
-                <form class="rb-customer-form active rb-form-login" action="https://rubiktheme.com/demo/rb_davici_demo/en/login" method="post">
+                <form class="rb-customer-form active rb-form-login" onsubmit="return false" id="login" method="post">
                   <div class="relative form-group">
                     <div class="icon-true">
-                      <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
-                      <i class="material-icons">email</i>
+                     <label for="email">Email</label>
+											<input type="email" class="form-control" name="email" id="email" required />
                     </div>
                   </div>
                   <div class="relative form-group">
                     <div class="input-group-dis js-parent-focus">
                       <div class="icon-true relative">
-                        <input class="form-control js-child-focus js-visible-password" name="password" type="password" value="" placeholder="Password" required="" />
-                        <i class="material-icons">vpn_key</i>
+                      <label for="email">Password</label>
+											<input type="password" class="form-control js-child-focus js-visible-password" name="password" id="password" required />
                       </div>
                     </div>
                   </div>
 
                   <div class="login-submit">
                     <input type="hidden" name="submitLogin" value="1" />
-                    <button class="btn btn-primary login-button" data-link-action="sign-in" type="submit">
-                      Sign In
-                    </button>
+                    <input type="submit" class="btn btn-primary login-button" value="Login">
                   </div>
 
                   <a href="password-recovery.html" rel="nofollow">
                     Forgot your password?
                   </a>
+                  <a href="customer_registration.php?register=1" style="color:white; text-decoration:none;">Create Account Now</a>
                 </form>
 
                 <form action="https://rubiktheme.com/demo/rb_davici_demo/en/login?create_account=1?back=identity" class="rb-customer-form rb-form-register" method="POST">
@@ -2231,7 +2230,7 @@
                   </div>
 
                   <div class="form-wrap">
-                    <form class="rb-customer-form active rb-form-login" action="https://rubiktheme.com/demo/rb_davici_demo/en/login" method="post">
+                    <form class="rb-customer-form active rb-form-login" onsubmit="return false" id="login" method="post">
                       <div class="relative form-group">
                         <div class="icon-true">
                           <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
@@ -2249,9 +2248,7 @@
 
                       <div class="login-submit">
                         <input type="hidden" name="submitLogin" value="1" />
-                        <button class="btn btn-primary login-button" data-link-action="sign-in" type="submit">
-                          Sign In
-                        </button>
+                        <input type="submit" class="btn btn-primary login-button" value="Login">
                       </div>
 
                       <a href="password-recovery.html" rel="nofollow">
