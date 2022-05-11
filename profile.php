@@ -529,7 +529,11 @@ include "db.php";
 							</div>
 						</div>
 					</li>
-					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo "Hi, " . $_SESSION["name"]; ?></a>
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"></span>
+							<?php echo "Hi, " . $_SESSION["name"]; ?>
+						</a>
 						<ul class="dropdown-menu">
 							<li><a href="cart.php" style="text-decoration:none; color:black;"><span class="glyphicon glyphicon-shopping-cart"> Cart</a></li>
 							<li class="divider"></li>
@@ -619,8 +623,8 @@ include "db.php";
 						<div id="get_product"> <?php
 																		$limit = 9;
 																		if (isset($_POST["setPage"])) {
-																			$pageno = $_POST["pageNumber"];
-																			$start = ($pageno * $limit) - $limit;
+																			$page_number = $_POST["pageNumber"];
+																			$start = ($page_number * $limit) - $limit;
 																		} else {
 																			$start = 0;
 																		}
@@ -672,7 +676,7 @@ include "db.php";
 		<div class="row">
 			<div class="col-md-12">
 				<center>
-					<ul class="pagination" id="pageno">
+					<ul class="pagination" id="page_number">
 						<?php
 
 						$sql = "SELECT * FROM products";

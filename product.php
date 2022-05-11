@@ -193,7 +193,7 @@ $item      = mysqli_fetch_array($run_query);
         "img_cat_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/c\/",
         "img_lang_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/l\/",
         "img_prod_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/p\/",
-        "img_manu_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/m\/",
+        "img_menu_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/m\/",
         "img_sup_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/su\/",
         "img_ship_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/s\/",
         "img_store_url": "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/st\/",
@@ -391,7 +391,7 @@ $item      = mysqli_fetch_array($run_query);
   </script>
 
   <!-- end modules/rbthememenu/views/templates/hook/header.tpl -->
-  <meta name="generator" content="Powered by Rubikthem1.0.0 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Module for PrestaShop." />
+  <meta name="generator" content="Powered by Rubiktheme1.0.0 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Module for PrestaShop." />
   <meta property="og:type" content="product">
   <meta property="og:image" content="https://rubiktheme.com/demo/rb_davici_demo/36-thickbox_default/modern-swivel-accent-chair.jpg">
   <meta property="product:pretax_price:amount" content="25.1">
@@ -765,8 +765,8 @@ $item      = mysqli_fetch_array($run_query);
                   <?php
                   $limit = 4;
                   if (isset($_POST["setPage"])) {
-                    $pageno = $_POST["pageNumber"];
-                    $start = ($pageno * $limit) - $limit;
+                    $page_number = $_POST["pageNumber"];
+                    $start = ($page_number * $limit) - $limit;
                   } else {
                     $start = 0;
                   }

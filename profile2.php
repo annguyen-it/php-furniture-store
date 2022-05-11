@@ -192,7 +192,7 @@ include "db.php";
 				img_cat_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/c\/",
 				img_lang_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/l\/",
 				img_prod_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/p\/",
-				img_manu_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/m\/",
+				img_menu_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/m\/",
 				img_sup_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/su\/",
 				img_ship_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/s\/",
 				img_store_url: "https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/img\/st\/",
@@ -848,7 +848,7 @@ include "db.php";
 	</style>
 
 	<!-- end modules/rbthememenu/views/templates/hook/header.tpl -->
-	<meta name="generator" content="Powered by Rubikthem1.0.0 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Module for PrestaShop." />
+	<meta name="generator" content="Powered by Rubiktheme1.0.0 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Module for PrestaShop." />
 
 	<script src="js/jquery2.js"></script>
 	<script src="main.js"></script>
@@ -1562,8 +1562,8 @@ include "db.php";
 																							<?php
 																							$limit = 9;
 																							if (isset($_POST["setPage"])) {
-																								$pageno = $_POST["pageNumber"];
-																								$start = ($pageno * $limit) - $limit;
+																								$page_number = $_POST["pageNumber"];
+																								$start = ($page_number * $limit) - $limit;
 																							} else {
 																								$start = 0;
 																							}
@@ -1603,8 +1603,8 @@ include "db.php";
 																							<?php
 																							$limit = 9;
 																							if (isset($_POST["setPage"])) {
-																								$pageno = $_POST["pageNumber"];
-																								$start = ($pageno * $limit) - $limit;
+																								$page_number = $_POST["pageNumber"];
+																								$start = ($page_number * $limit) - $limit;
 																							} else {
 																								$start = 0;
 																							}
@@ -1644,8 +1644,8 @@ include "db.php";
 																							<?php
 																							$limit = 9;
 																							if (isset($_POST["setPage"])) {
-																								$pageno = $_POST["pageNumber"];
-																								$start = ($pageno * $limit) - $limit;
+																								$page_number = $_POST["pageNumber"];
+																								$start = ($page_number * $limit) - $limit;
 																							} else {
 																								$start = 0;
 																							}
@@ -2844,6 +2844,10 @@ include "db.php";
 	</main>
 
 	<script type="text/javascript" src="./themes/rb_davici/assets/cache/bottom-e25b9038.js"></script>
+
+	<script>
+		var CURRENCY = '<?php echo CURRENCY; ?>';
+	</script>
 </body>
 
 <!-- Mirrored from rubiktheme.com/demo/rb_davici_demo/en/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Apr 2022 00:40:08 GMT -->

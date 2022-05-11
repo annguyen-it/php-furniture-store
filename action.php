@@ -5,8 +5,8 @@ include "db.php";
 if (isset($_POST["getProduct"])) {
 	$limit = 9;
 	if (isset($_POST["setPage"])) {
-		$pageno = $_POST["pageNumber"];
-		$start = ($pageno * $limit) - $limit;
+		$page_number = $_POST["pageNumber"];
+		$start = ($page_number * $limit) - $limit;
 	} else {
 		$start = 0;
 	}
@@ -36,8 +36,8 @@ if (isset($_POST["getProduct"])) {
 		}
 	}
 }
-if (isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isset($_POST["search"])) {
-	if (isset($_POST["get_seleted_Category"])) {
+if (isset($_POST["get_selected_Category"]) || isset($_POST["selectBrand"]) || isset($_POST["search"])) {
+	if (isset($_POST["get_selected_Category"])) {
 		$id = $_POST["cat_id"];
 		$sql = "SELECT * FROM products WHERE product_cat = '$id'";
 	} else if (isset($_POST["selectBrand"])) {
