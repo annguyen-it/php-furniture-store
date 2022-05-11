@@ -900,7 +900,7 @@
           <!-- end header-center -->
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 header-center">
             <div class="header_logo">
-              <a href="https://rubiktheme.com/demo/rb_davici_demo/">
+              <a href="/ecommerce-app-h">
                 <img class="logo" src="./img/logo.jpg" alt="Davici - Furniture Store" />
               </a>
             </div>
@@ -1266,7 +1266,7 @@
         <div class="row header-flex">
           <div class="header-left col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12 col-sp-12">
             <div class="head_logo">
-              <a href="https://rubiktheme.com/demo/rb_davici_demo/">
+              <a href="/ecommerce-app-h">
                 <img class="logo" src="./img/logo.jpg" alt="Davici - Furniture Store" />
               </a>
             </div>
