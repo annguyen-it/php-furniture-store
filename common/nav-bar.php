@@ -37,7 +37,7 @@
                         </div>
                       </li>
                       <li class="rb_menus_li custom_home rb_sub_align_full rb_has_sub">
-                        <a href="index.html" style="font-size: 18px">
+                        <a href="index.php" style="font-size: 18px">
                           <span class="rb_menu_content_title">
                             <span class="rb-menutitle">Home</span>
                             <span class="rb_arrow"></span>
