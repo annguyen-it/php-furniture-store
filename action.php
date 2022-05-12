@@ -234,7 +234,7 @@ if (isset($_POST["Common"])) {
 			if (!isset($_SESSION["uid"])) {
 				echo '<input type="submit" style="float:right;" name="login_user_with_product" class="btn btn-info btn-lg" value="Ready to Checkout" >
 							</form>';
-			} else if (isset($_SESSION["uid"])) {
+			} else {
 				//Paypal checkout form
 				echo '
 						</form>
@@ -244,7 +244,13 @@ if (isset($_POST["Common"])) {
 							<input type="hidden" name="upload" value="1">';
 
 				$x = 0;
-				$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
+				$sql = "SELECT a.product_id, a.product_title, a.product_price, pi.product_image, b.id, b.qty
+								FROM products a
+										 JOIN cart b ON a.product_id = b.p_id
+										 LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+															 ON pi.product_id = a.product_id
+								WHERE b.user_id = $_SESSION[uid]";
+
 				$query = mysqli_query($con, $sql);
 				while ($row = mysqli_fetch_array($query)) {
 					$x++;

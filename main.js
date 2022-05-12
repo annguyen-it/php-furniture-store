@@ -230,6 +230,7 @@ $(document).ready(function () {
 		getCartItem is used to show the cart item into dropdown menu 
 		checkOutDetails is used to show cart item into Cart.php page
 	*/
+	checkOutDetails();
 	function checkOutDetails() {
 		$('.overlay').show();
 		$.ajax({
