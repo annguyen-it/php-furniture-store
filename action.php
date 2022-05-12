@@ -152,10 +152,20 @@ if (isset($_POST["Common"])) {
 
 	if (isset($_SESSION["uid"])) {
 		//When user is logged in this query will execute
-		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
+		$sql = "SELECT a.product_id, a.product_title, a.product_price, b.id, b.qty, pi.product_image
+						FROM products a
+								 JOIN cart b ON a.product_id = b.p_id
+								 LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+													 ON pi.product_id = a.product_id
+						WHERE b.user_id = $_SESSION[uid]";
 	} else {
 		//When user is not logged in this query will execute
-		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.ip_add='$ip_add' AND b.user_id < 0";
+		$sql = "SELECT a.product_id, a.product_title, a.product_price, b.id, b.qty, pi.product_image
+						FROM products a
+								 JOIN cart b ON a.product_id = b.p_id
+								 LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+													 ON pi.product_id = a.product_id
+						WHERE b.user_id < 0";
 	}
 	$query = mysqli_query($con, $sql);
 	if (isset($_POST["getCartItem"])) {

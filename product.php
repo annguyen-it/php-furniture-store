@@ -5,25 +5,44 @@ if (!isset($_SESSION["uid"])) {
   header("location:index.php");
 }
 
+if (!isset($_GET["id"])) die();
+$pid = $_GET["id"];
+
 include "db.php";
 
-$query     = 'SELECT product_id,
+$query     = "SELECT p.product_id,
                      product_cat,
                      product_title,
                      product_price,
                      product_qty,
                      product_desc,
-                     product_image,
                      product_keywords,
                      brand_id,
-                     brand_title
-              FROM products
-                   JOIN brands b ON b.brand_id = products.product_brand
-              WHERE product_id = 4
-              LIMIT 1';
+                     brand_title,
+                     pi.product_image
+              FROM products p
+              JOIN brands b ON b.brand_id = p.product_brand
+              LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+                        ON pi.product_id = p.product_id
+              WHERE p.product_id = $pid
+              LIMIT 1";
 
 $run_query = mysqli_query($con, $query);
 $item      = mysqli_fetch_array($run_query);
+
+$query = "SELECT product_image
+          FROM product_image
+          WHERE product_id = 19";
+
+$run_query = mysqli_query($con, $query);
+$images = array();
+
+
+if ($query && mysqli_num_rows($run_query) > 0) {
+  while ($row = mysqli_fetch_array($run_query)) {
+    array_push($images, $row["product_image"]);
+  }
+}
 
 ?>
 
@@ -37,13 +56,6 @@ $item      = mysqli_fetch_array($run_query);
   <title>Modern Swivel Accent Chair</title>
   <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.">
   <meta name="keywords" content="">
-  <link rel="canonical" href="3-modern-swivel-accent-chair.html">
-  <link rel="alternate" href="3-modern-swivel-accent-chair.html" hreflang="en-us">
-  <link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/fr/accueil/3-modern-swivel-accent-chair.html" hreflang="fr-fr">
-  <link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/de/startseite/3-modern-swivel-accent-chair.html" hreflang="de-de">
-  <link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/it/home/3-modern-swivel-accent-chair.html" hreflang="it-it">
-  <link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/es/inicio/3-modern-swivel-accent-chair.html" hreflang="es-es">
-  <link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/pl/strona-glowna/3-modern-swivel-accent-chair.html" hreflang="pl-pl">
   <meta property="og:title" content="Modern Swivel Accent Chair" />
   <meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
   <meta property="og:url" content="https://rubiktheme.com/demo/rb_davici_demo/en/home/3-13-modern-swivel-accent-chair.html" />
@@ -410,6 +422,8 @@ $item      = mysqli_fetch_array($run_query);
       width: 35px;
     }
   </style>
+
+  <script src="js/jquery2.js"></script>
 </head>
 
 <body id="product" class="lang-en country-us currency-eur layout-full-width page-product tax-display-disabled product-id-3 product-modern-swivel-accent-chair product-id-category-2 product-id-manufacturer-2 product-id-supplier-0 product-available-for-order home-1">
@@ -457,63 +471,37 @@ $item      = mysqli_fetch_array($run_query);
                     </ul>
                     <div class="images-container js-images-container">
                       <div class="product-cover product-img-slick">
-                        <img class="images-zoom js-qv-product-cover" data-zoom-image="./product_images/<?= $item['product_image'] ?>" data-src="../../36-large_default/modern-swivel-accent-chair.jpg" data-zoom="./product_images/<?= $item['product_image'] ?>" src="../../36-large_default/modern-swivel-accent-chair.jpg" style="width:100%" data-rb-image="../../36-large_default/modern-swivel-accent-chair.jpg" loading="lazy">
-                        <img class="images-zoom js-qv-product-cover" data-zoom-image="../../37-medium_default/modern-swivel-accent-chair.jpg" data-src="../../37-large_default/modern-swivel-accent-chair.jpg" data-zoom="../../37-medium_default/modern-swivel-accent-chair.jpg" src="../../37-large_default/modern-swivel-accent-chair.jpg" style="width:100%" data-rb-image="../../37-large_default/modern-swivel-accent-chair.jpg" loading="lazy">
-                        <img class="images-zoom js-qv-product-cover" data-zoom-image="../../38-medium_default/modern-swivel-accent-chair.jpg" data-src="../../38-large_default/modern-swivel-accent-chair.jpg" data-zoom="../../38-medium_default/modern-swivel-accent-chair.jpg" src="../../38-large_default/modern-swivel-accent-chair.jpg" style="width:100%" data-rb-image="../../38-large_default/modern-swivel-accent-chair.jpg" loading="lazy">
-                        <img class="images-zoom js-qv-product-cover" data-zoom-image="../../39-medium_default/modern-swivel-accent-chair.jpg" data-src="../../39-large_default/modern-swivel-accent-chair.jpg" data-zoom="../../39-medium_default/modern-swivel-accent-chair.jpg" src="../../39-large_default/modern-swivel-accent-chair.jpg" style="width:100%" data-rb-image="../../39-large_default/modern-swivel-accent-chair.jpg" loading="lazy">
-                        <img class="images-zoom js-qv-product-cover" data-zoom-image="../../40-medium_default/modern-swivel-accent-chair.jpg" data-src="../../40-large_default/modern-swivel-accent-chair.jpg" data-zoom="../../40-medium_default/modern-swivel-accent-chair.jpg" src="../../40-large_default/modern-swivel-accent-chair.jpg" style="width:100%" data-rb-image="../../40-large_default/modern-swivel-accent-chair.jpg" loading="lazy">
-                        <img class="images-zoom js-qv-product-cover" data-zoom-image="../../41-medium_default/modern-swivel-accent-chair.jpg" data-src="../../41-large_default/modern-swivel-accent-chair.jpg" data-zoom="../../41-medium_default/modern-swivel-accent-chair.jpg" src="../../41-large_default/modern-swivel-accent-chair.jpg" style="width:100%" data-rb-image="../../41-large_default/modern-swivel-accent-chair.jpg" loading="lazy">
+                        <img class="images-zoom js-qv-product-cover" data-zoom-image="./product_images/<?= $item['product_image'] ?>" data-src="./product_images/<?= $item['product_image'] ?>" data-zoom="./product_images/<?= $item['product_image'] ?>" src="./product_images/<?= $item['product_image'] ?>" style="width:100%" data-rb-image="./product_images/<?= $item['product_image'] ?>" loading="lazy">
+
+                        <?php
+                        foreach ($images as $image) {
+                        ?>
+                          <img class="images-zoom js-qv-product-cover" data-zoom-image="./product_images/<?= $image ?>" data-src="./product_images/<?= $image ?>" data-zoom="./product_images/<?= $image ?>" src="./product_images/<?= $image ?>" style="width:100%" data-rb-image="./product_images/<?= $image ?>" loading="lazy">
+                        <?php
+                        }
+                        ?>
+
                       </div>
                       <div id="rb_gallery" class="product-img-slick">
-                        <a class="thumb-container" href="javascript:void(0)" data-image="./product_images/<?= $item['product_image'] ?>" data-zoom-image="../../36-large_default/modern-swivel-accent-chair.jpg">
-                          <img class="img img-thumb" id="rb_img_1" src="../../36-small_default/modern-swivel-accent-chair.jpg" />
+                        <a class="thumb-container" href="javascript:void(0)" data-image="./product_images/<?= $item['product_image'] ?>" data-zoom-image="./product_images/<?= $item['product_image'] ?>">
+                          <img class="img img-thumb" id="rb_img_1" src="./product_images/<?= $item['product_image'] ?>" />
                         </a>
-                        <a class="thumb-container" href="javascript:void(0)" data-image="../../37-medium_default/modern-swivel-accent-chair.jpg" data-zoom-image="../../37-large_default/modern-swivel-accent-chair.jpg">
-                          <img class="img img-thumb" id="rb_img_2" src="../../37-small_default/modern-swivel-accent-chair.jpg" />
-                        </a>
-                        <a class="thumb-container" href="javascript:void(0)" data-image="../../38-medium_default/modern-swivel-accent-chair.jpg" data-zoom-image="../../38-large_default/modern-swivel-accent-chair.jpg">
-                          <img class="img img-thumb" id="rb_img_3" src="../../38-small_default/modern-swivel-accent-chair.jpg" />
-                        </a>
-                        <a class="thumb-container" href="javascript:void(0)" data-image="../../39-medium_default/modern-swivel-accent-chair.jpg" data-zoom-image="../../39-large_default/modern-swivel-accent-chair.jpg">
-                          <img class="img img-thumb" id="rb_img_4" src="../../39-small_default/modern-swivel-accent-chair.jpg" />
-                        </a>
-                        <a class="thumb-container" href="javascript:void(0)" data-image="../../40-medium_default/modern-swivel-accent-chair.jpg" data-zoom-image="../../40-large_default/modern-swivel-accent-chair.jpg">
-                          <img class="img img-thumb" id="rb_img_5" src="../../40-small_default/modern-swivel-accent-chair.jpg" />
-                        </a>
-                        <a class="thumb-container" href="javascript:void(0)" data-image="../../41-medium_default/modern-swivel-accent-chair.jpg" data-zoom-image="../../41-large_default/modern-swivel-accent-chair.jpg">
-                          <img class="img img-thumb" id="rb_img_6" src="../../41-small_default/modern-swivel-accent-chair.jpg" />
-                        </a>
+
+                        <?php
+                        foreach ($images as $image) {
+                        ?>
+                          <a class="thumb-container" href="javascript:void(0)" data-image="./product_images/<?= $image ?>" data-zoom-image="./product_images/<?= $image ?>">
+                            <img class="img img-thumb" id="rb_img_2" src="./product_images/<?= $image ?>" />
+                          </a>
+                        <?php
+                        }
+                        ?>
+
                       </div>
                     </div>
                   </section>
                 </div>
                 <div class="detail-padding-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-sp-12">
-                  <!-- begin modules/rbthemefunction/views/templates/hook/rb-next-prev.tpl -->
-                  <div class="product-button-next-prev">
-                    <div class="product-button-prev">
-                      <a class="btn btn-default button button-prev" href="../bed-bath/2-armen-living-summer-chair.html" title="Armen Living Summer Chair">
-                        <i class="fa fa-angle-left"></i>
-                      </a>
-
-                      <div class="button-hover">
-                        <img class="img-fluid" src="../../30-home_default/armen-living-summer-chair.jpg" title="Armen Living Summer Chair">
-                        <h5>Armen Living Summer Chair</h5>
-                      </div>
-                    </div>
-
-                    <div class="product-button-next">
-                      <a class="btn btn-default button button-prev" href="4-cache-pendant-xl.html" title="Cache pendant xl">
-                        <i class="fa fa-angle-right"></i>
-                      </a>
-
-                      <div class="button-hover">
-                        <img class="img-fluid" src="../../42-home_default/cache-pendant-xl.jpg" title="Cache pendant xl">
-                        <h5>Cache pendant xl</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end modules/rbthemefunction/views/templates/hook/rb-next-prev.tpl -->
-
                   <h1 class="h1 product-detail-name"><?= $item['product_title'] ?></h1>
                   <div class="product-prices js-product-prices">
                     <div class="product-price h5 ">
@@ -529,7 +517,7 @@ $item      = mysqli_fetch_array($run_query);
                       <div class="product-manufacturer">
                         <label class="label">Brand:</label>
                         <span>
-                          <a href="../brand/2-graphic-corner.html"><?= $item['brand_title'] ?></a>
+                          <a href="#"><?= $item['brand_title'] ?></a>
                         </span>
                       </div>
                       <div class="product-quantities">
@@ -548,12 +536,162 @@ $item      = mysqli_fetch_array($run_query);
                     <div id="product-description-short-3" class="product-description">
                       <p><?= $item['product_desc'] ?></p>
                     </div>
+
                     <div class="product-actions js-product-actions">
                       <!-- begin /var/www/html/demo/rb_davici_demo/modules/rbthemefunction/views/templates/rb-ajax-loading.tpl -->
                       <div class="cssload-container rb-ajax-loading">
                         <div class="cssload-double-torus"></div>
                       </div>
                       <!-- end /var/www/html/demo/rb_davici_demo/modules/rbthemefunction/views/templates/rb-ajax-loading.tpl -->
+
+                      <form>
+                        <input type="hidden" name="token" value="bf0ba928fbfcc103ff31ff1e6c6b511b">
+                        <input type="hidden" name="id_product" value="6" id="product_page_product_id">
+                        <input type="hidden" name="id_customization" value="0" id="product_customization_id" class="js-product-customization-id">
+                        <div class="product-variants js-product-variants"></div>
+                        <section class="product-discounts js-product-discounts"></section>
+                        <div class="product-add-to-cart js-product-add-to-cart">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12" id="product_msg">
+                            </div>
+                          </div>
+
+                          <div class="product-quantity clearfix">
+                            <div class="add">
+                              <button class="btn btn-primary add-to-cart" pid="<?= $pro_id ?>" style="float:right;" id="product">
+                                Add to cart
+                              </button>
+                              <div class="page-loading-overlay add-to-cart-loading"></div>
+                            </div>
+                          </div>
+                          <div class="compare-wishlist-button">
+                            <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-wishlist.tpl -->
+                            <div class="rb-wishlist">
+                              <a class="rb-wishlist-link rb-btn-product " href="#" data-id-wishlist="" data-id-product="6" data-id-product-attribute="0" data-id_wishlist_product="0" title="Add to Wishlist">
+                                <i class="icon-btn-product icon-wishlist icon-heart"></i>
+                                <span class="icon-title">Add to Wishlist</span>
+                              </a>
+                            </div>
+                            <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-wishlist.tpl -->
+                            <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-compare.tpl -->
+                            <a href="#" data-id_product="6" title="Product Comparison" class="rb-compare-link rb-btn-product " rel="nofollow">
+                              <i class="icon-random"></i>
+                              <span class="icon-title">Add Compare</span>
+                            </a>
+                            <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-compare.tpl -->
+                          </div>
+                          <p class="product-minimal-quantity js-product-minimal-quantity">
+                          </p>
+                        </div>
+                        <div class="product-additional-info js-product-additional-info">
+                          <!-- begin module:ps_sharebuttons/views/templates/hook/ps_sharebuttons.tpl -->
+                          <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_sharebuttons/views/templates/hook/ps_sharebuttons.tpl -->
+                          <div class="social-sharing">
+                            <span class="share-this"><i class="fa fa-share-alt"></i>Share this:</span>
+                            <ul>
+                              <li class="facebook">
+                                <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Frubiktheme.com%2Fdemo%2Frb_davici_demo%2Fen%2Fwall-lamp%2F6-modern-sofa-couch-with-wood.html" title="Share" target="_blank" rel="noopener noreferrer">
+                                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                              </li>
+                              <li class="twitter">
+                                <a href="https://twitter.com/intent/tweet?text=Modern+Sofa+Couch+with+Wood%20https%3A%2F%2Frubiktheme.com%2Fdemo%2Frb_davici_demo%2Fen%2Fwall-lamp%2F6-modern-sofa-couch-with-wood.html" title="Tweet" target="_blank" rel="noopener noreferrer">
+                                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                              </li>
+                              <li class="pinterest">
+                                <a href="https://www.pinterest.com/pin/create/button/?media=https%3A%2F%2Frubiktheme.com%2Fdemo%2Frb_davici_demo%2F54%2Fmodern-sofa-couch-with-wood.jpg&amp;url=https%3A%2F%2Frubiktheme.com%2Fdemo%2Frb_davici_demo%2Fen%2Fwall-lamp%2F6-modern-sofa-couch-with-wood.html" title="Pinterest" target="_blank" rel="noopener noreferrer">
+                                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_sharebuttons/views/templates/hook/ps_sharebuttons.tpl -->
+                          <!-- end module:ps_sharebuttons/views/templates/hook/ps_sharebuttons.tpl -->
+
+                          <!-- begin modules/rbsizeguide/views/templates/hook/button.tpl -->
+                          <button type="button" class="btn btn-primary rb-product-sizeguide">Size Guide</button>
+                          <!-- end modules/rbsizeguide/views/templates/hook/button.tpl -->
+                        </div>
+                        <a class="rb-print rb-btn-product" href="javascript:print();">
+                          <i class="fa fa-print"></i>
+                          Print
+                        </a>
+
+                        <!-- begin modules/rbthemefunction/views/templates/hook/rb-tag-cate.tpl -->
+                        <div class="rb-tag-cate">
+                          <div class="rb-category">
+                            <label class="title-cate">
+                              <i class="material-icons">edit</i>
+                              Categories:
+                            </label>
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Home">
+                                Home
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Furniture">
+                                Furniture
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Accessories">
+                                Accessories
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Outdoor">
+                                Outdoor
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Bed &amp; Bath">
+                                Bed &amp; Bath
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Wall Lamp">
+                                Wall Lamp
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Lighting">
+                                Lighting
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Side Tables">
+                                Side Tables
+                              </a>
+                            </span>
+                            ,
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title="Bar Cabinets">
+                                Bar Cabinets
+                              </a>
+                            </span>
+                          </div>
+                          <div class="rb-tag">
+                            <label class="title-tag">
+                              <i class="material-icons">bookmark_border</i>
+                              Tags:
+                            </label>
+                            <span class="rb-items">
+                              <a href="#" target="_blank" title=""></a>
+                            </span>
+                          </div>
+                        </div>
+                        <!-- end modules/rbthemefunction/views/templates/hook/rb-tag-cate.tpl -->
+                      </form>
+
                     </div>
 
                     <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/blockreassurance/views/templates/hook/displayBlockProduct.tpl -->
@@ -713,7 +851,7 @@ $item      = mysqli_fetch_array($run_query);
 
                       <div class="js-product-details tab-pane fade" id="product-details" data-product="{&quot;id_shop_default&quot;:&quot;1&quot;,&quot;id_manufacturer&quot;:&quot;2&quot;,&quot;id_supplier&quot;:&quot;0&quot;,&quot;reference&quot;:&quot;demo_6&quot;,&quot;is_virtual&quot;:&quot;0&quot;,&quot;delivery_in_stock&quot;:null,&quot;delivery_out_stock&quot;:null,&quot;id_category_default&quot;:&quot;2&quot;,&quot;on_sale&quot;:&quot;0&quot;,&quot;online_only&quot;:&quot;0&quot;,&quot;ecotax&quot;:&quot;0.000000&quot;,&quot;minimal_quantity&quot;:&quot;1&quot;,&quot;low_stock_threshold&quot;:null,&quot;low_stock_alert&quot;:&quot;0&quot;,&quot;price&quot;:&quot;\u20ac25.10&quot;,&quot;unity&quot;:null,&quot;unit_price_ratio&quot;:&quot;0.000000&quot;,&quot;additional_shipping_cost&quot;:&quot;0.000000&quot;,&quot;customizable&quot;:&quot;0&quot;,&quot;text_fields&quot;:&quot;0&quot;,&quot;uploadable_files&quot;:&quot;0&quot;,&quot;redirect_type&quot;:&quot;301-category&quot;,&quot;id_type_redirected&quot;:&quot;0&quot;,&quot;available_for_order&quot;:&quot;1&quot;,&quot;available_date&quot;:null,&quot;show_condition&quot;:&quot;0&quot;,&quot;condition&quot;:&quot;new&quot;,&quot;show_price&quot;:&quot;1&quot;,&quot;indexed&quot;:&quot;1&quot;,&quot;visibility&quot;:&quot;both&quot;,&quot;cache_default_attribute&quot;:&quot;13&quot;,&quot;advanced_stock_management&quot;:&quot;0&quot;,&quot;date_add&quot;:&quot;2021-02-22 21:19:59&quot;,&quot;date_upd&quot;:&quot;2021-09-13 09:01:46&quot;,&quot;pack_stock_type&quot;:&quot;3&quot;,&quot;meta_description&quot;:null,&quot;meta_keywords&quot;:null,&quot;meta_title&quot;:null,&quot;link_rewrite&quot;:&quot;modern-swivel-accent-chair&quot;,&quot;name&quot;:&quot;Modern Swivel Accent Chair&quot;,&quot;description&quot;:&quot;&lt;table class=\&quot;table table-striped table-borderless h-font text-uppercase\&quot; style=\&quot;height:157px;\&quot; width=\&quot;1217\&quot;&gt;\r\n&lt;tbody&gt;\r\n&lt;tr class=\&quot;background-odd\&quot;&gt;\r\n&lt;td&gt;&lt;\/td&gt;\r\n&lt;td&gt;inches&lt;\/td&gt;\r\n&lt;td&gt;cm&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr class=\&quot;background-odd\&quot;&gt;\r\n&lt;td&gt;Height&lt;\/td&gt;\r\n&lt;td&gt;34.6&lt;\/td&gt;\r\n&lt;td&gt;88&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr&gt;\r\n&lt;td&gt;Width&lt;\/td&gt;\r\n&lt;td&gt;71.7 x 89.4&lt;\/td&gt;\r\n&lt;td&gt;182 x 227&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr class=\&quot;background-odd\&quot;&gt;\r\n&lt;td&gt;Depth&lt;\/td&gt;\r\n&lt;td&gt;35.8&lt;\/td&gt;\r\n&lt;td&gt;91&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr&gt;\r\n&lt;td&gt;Internal&lt;\/td&gt;\r\n&lt;td&gt;57.1 x 68.1&lt;\/td&gt;\r\n&lt;td&gt;145 x 173&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr class=\&quot;background-odd\&quot;&gt;\r\n&lt;td&gt;Seat Height&lt;\/td&gt;\r\n&lt;td&gt;19.7&lt;\/td&gt;\r\n&lt;td&gt;50&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr&gt;\r\n&lt;td&gt;Seat Depth&lt;\/td&gt;\r\n&lt;td&gt;22.4&lt;\/td&gt;\r\n&lt;td&gt;57&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;tr class=\&quot;background-odd\&quot;&gt;\r\n&lt;td&gt;Arm Height&lt;\/td&gt;\r\n&lt;td&gt;26&lt;\/td&gt;\r\n&lt;td&gt;66&lt;\/td&gt;\r\n&lt;\/tr&gt;\r\n&lt;\/tbody&gt;\r\n&lt;\/table&gt;\r\n&lt;p&gt;Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum. Sed quam odio, porta a finibus quis, sagittis aliquet leo. Nunc ornare metus urna, eu luctus velit placerat ut. Cras at porttitor lectus. Ut dapibus aliquam nibh, in imperdiet libero tincidunt sit amet. Morbi sodales fermentum nibh nec facilisis. Morbi pharetra varius velit, eget varius libero finibus quis. Quisque auctor varius lectus, lacinia rhoncus velit posuere vel. Cras condimentum tincidunt urna, sed vehicula ipsum dapibus et. Pellentesque pharetra ultrices varius. Sed viverra nec purus ut ornare.&lt;\/p&gt;\r\n&lt;ul&gt;\r\n&lt;li&gt;Aenean auctor sem ac ex efficitur&lt;\/li&gt;\r\n&lt;li&gt;Non mattis odio bibendum&lt;\/li&gt;\r\n&lt;li&gt;Sed vitae enim at tortor finibus&lt;\/li&gt;\r\n&lt;li&gt;Integer facilisis eleifend vehicula&lt;\/li&gt;\r\n&lt;li&gt;In hac habitasse platea dictumst&lt;\/li&gt;\r\n&lt;\/ul&gt;\r\n&lt;p&gt;Sed molestie orci sem, at semper est molestie ac. Suspendisse cursus feugiat erat, eu posuere massa. Nullam posuere nibh non eros lobortis tempus. Maecenas dignissim elementum massa, vel accumsan urna elementum in. Suspendisse at dui euismod, rhoncus eros non, imperdiet ipsum. Vestibulum vehicula vel turpis et vestibulum. Ut porta et ex maximus malesuada.&lt;\/p&gt;&quot;,&quot;description_short&quot;:&quot;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;\/p&gt;&quot;,&quot;available_now&quot;:null,&quot;available_later&quot;:null,&quot;id&quot;:3,&quot;id_product&quot;:&quot;3&quot;,&quot;out_of_stock&quot;:&quot;2&quot;,&quot;new&quot;:&quot;1&quot;,&quot;id_product_attribute&quot;:13,&quot;quantity_wanted&quot;:1,&quot;extraContent&quot;:[{&quot;title&quot;:&quot;Facebook Comments&quot;,&quot;content&quot;:&quot;&lt;div id=\&quot;fcbc\&quot;&gt;&lt;fb:comments href=https://rubiktheme.com/" https:////rubiktheme.com//demo//rb_davici_demo//en//home//3-13-modern-swivel-accent-chair.html/" colorscheme=\&quot;light\&quot; width=\&quot;\&quot;&gt;&lt;\/fb:comments&gt;&lt;\/div&gt;&quot;,&quot;attr&quot;:{&quot;id&quot;:&quot;&quot;,&quot;class&quot;:&quot;&quot;},&quot;moduleName&quot;:&quot;rbthemefunction&quot;}],&quot;allow_oosp&quot;:0,&quot;quantity&quot;:900,&quot;id_image&quot;:&quot;3-36&quot;,&quot;category&quot;:&quot;home&quot;,&quot;category_name&quot;:&quot;Home&quot;,&quot;link&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/en\/home\/3-modern-swivel-accent-chair.html&quot;,&quot;attribute_price&quot;:0,&quot;price_tax_exc&quot;:25.1,&quot;price_without_reduction&quot;:25.1,&quot;reduction&quot;:0,&quot;specific_prices&quot;:[],&quot;quantity_all_versions&quot;:1500,&quot;features&quot;:[{&quot;name&quot;:&quot;Composition&quot;,&quot;value&quot;:&quot;Matt paper&quot;,&quot;id_feature&quot;:&quot;1&quot;,&quot;position&quot;:&quot;0&quot;}],&quot;attachments&quot;:[],&quot;virtual&quot;:0,&quot;pack&quot;:0,&quot;packItems&quot;:[],&quot;nopackprice&quot;:0,&quot;customization_required&quot;:false,&quot;attributes&quot;:{&quot;3&quot;:{&quot;id_attribute&quot;:&quot;19&quot;,&quot;id_attribute_group&quot;:&quot;3&quot;,&quot;name&quot;:&quot;40x60cm&quot;,&quot;group&quot;:&quot;Dimension&quot;,&quot;reference&quot;:&quot;demo_6&quot;,&quot;ean13&quot;:null,&quot;isbn&quot;:null,&quot;upc&quot;:null,&quot;mpn&quot;:null}},&quot;rate&quot;:0,&quot;tax_name&quot;:&quot;&quot;,&quot;ecotax_rate&quot;:0,&quot;unit_price&quot;:&quot;&quot;,&quot;customizations&quot;:{&quot;fields&quot;:[]},&quot;id_customization&quot;:0,&quot;is_customizable&quot;:false,&quot;show_quantities&quot;:true,&quot;quantity_label&quot;:&quot;Items&quot;,&quot;quantity_discounts&quot;:[],&quot;customer_group_discount&quot;:0,&quot;images&quot;:[{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;36&quot;,&quot;cover&quot;:&quot;1&quot;,&quot;position&quot;:&quot;1&quot;,&quot;associatedVariants&quot;:[]},{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/37-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;37&quot;,&quot;cover&quot;:null,&quot;position&quot;:&quot;2&quot;,&quot;associatedVariants&quot;:[]},{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/38-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;38&quot;,&quot;cover&quot;:null,&quot;position&quot;:&quot;3&quot;,&quot;associatedVariants&quot;:[]},{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/39-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;39&quot;,&quot;cover&quot;:null,&quot;position&quot;:&quot;4&quot;,&quot;associatedVariants&quot;:[]},{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/40-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;40&quot;,&quot;cover&quot;:null,&quot;position&quot;:&quot;5&quot;,&quot;associatedVariants&quot;:[]},{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/41-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;41&quot;,&quot;cover&quot;:null,&quot;position&quot;:&quot;6&quot;,&quot;associatedVariants&quot;:[]}],&quot;cover&quot;:{&quot;bySize&quot;:{&quot;cart_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;small_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-small_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-medium_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:330,&quot;height&quot;:330},&quot;home_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-large_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:800,&quot;height&quot;:800},&quot;thickbox_default&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422}},&quot;small&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-cart_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:200,&quot;height&quot;:200},&quot;medium&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-home_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:700,&quot;height&quot;:700},&quot;large&quot;:{&quot;url&quot;:&quot;https:\/\/rubiktheme.com\/demo\/rb_davici_demo\/36-thickbox_default\/modern-swivel-accent-chair.jpg&quot;,&quot;width&quot;:1100,&quot;height&quot;:1422},&quot;legend&quot;:null,&quot;id_image&quot;:&quot;36&quot;,&quot;cover&quot;:&quot;1&quot;,&quot;position&quot;:&quot;1&quot;,&quot;associatedVariants&quot;:[]},&quot;has_discount&quot;:false,&quot;discount_type&quot;:null,&quot;discount_percentage&quot;:null,&quot;discount_percentage_absolute&quot;:null,&quot;discount_amount&quot;:null,&quot;discount_amount_to_display&quot;:null,&quot;price_amount&quot;:25.1,&quot;unit_price_full&quot;:&quot;&quot;,&quot;show_availability&quot;:true,&quot;availability_date&quot;:null,&quot;availability_message&quot;:&quot;&quot;,&quot;availability&quot;:&quot;available&quot;}" role="tabpanel">
                         <div class="product-manufacturer">
-                          <a href="../brand/2-graphic-corner.html">
+                          <a href="#">
                             <img src="../../img/m/2.jpg" class="img img-thumbnail manufacturer-logo" alt="Graphic Corner" loading="lazy" width="98" height="50">
                           </a>
                         </div>
@@ -770,13 +908,16 @@ $item      = mysqli_fetch_array($run_query);
                   } else {
                     $start = 0;
                   }
-                  $product_query = "SELECT * FROM products LIMIT $start,$limit";
+                  $product_query = "SELECT p.product_id, product_cat, product_title, product_price, product_image
+                                    FROM products p
+                                         LEFT JOIN (SELECT product_id, MIN(product_image) product_image FROM product_image GROUP BY product_id) pi
+                                                   ON pi.product_id = p.product_id
+                                    LIMIT $start,$limit";
                   $run_query = mysqli_query($con, $product_query);
                   if (mysqli_num_rows($run_query) > 0) {
                     while ($row = mysqli_fetch_array($run_query)) {
                       $pro_id    = $row['product_id'];
                       $pro_cat   = $row['product_cat'];
-                      $pro_brand = $row['product_brand'];
                       $pro_title = $row['product_title'];
                       $pro_price = $row['product_price'];
                       $pro_image = $row['product_image'];
@@ -800,7 +941,11 @@ $item      = mysqli_fetch_array($run_query);
     <?php include_once('./common/footer.php') ?>
   </main>
 
+  <script type="text/javascript" src="./main.js"></script>
   <script type="text/javascript" src="./themes/rb_davici/assets/cache/bottom-eff46e38.js"></script>
+  <script>
+    var CURRENCY = '<?php echo CURRENCY; ?>';
+  </script>
 </body>
 
 </html>

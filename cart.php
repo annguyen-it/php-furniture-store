@@ -72,14 +72,14 @@ include "db.php";
 							$sql = '';
 							if (isset($_SESSION["uid"])) {
 								//When user is logged in this query will execute
-								$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
+								$sql = "SELECT a.product_id,a.product_title,a.product_price,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
 							} else {
 								//When user is not logged in this query will execute
-								$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.ip_add='$ip_add' AND b.user_id < 0";
+								$sql = "SELECT a.product_id,a.product_title,a.product_price,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.ip_add='$ip_add' AND b.user_id < 0";
 							}
 							$query = mysqli_query($con, $sql);
 
-							if (mysqli_num_rows($query) > 0) {
+							if ($query && mysqli_num_rows($query) > 0) {
 								//display user cart item with "Ready to checkout" button if user is not login
 							?>
 								<form method="post" action="login_form.php">
@@ -145,16 +145,19 @@ include "db.php";
 										$x = 0;
 										$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
 										$query = mysqli_query($con, $sql);
-										while ($row = mysqli_fetch_array($query)) {
-											$x++;
+
+										if ($query) {
+											while ($row = mysqli_fetch_array($query)) {
+												$x++;
 										?>
 
-											<input type="hidden" name="item_name_<?= $x ?>" value="<?= $row["product_title"] ?>">
-											<input type="hidden" name="item_number_<?= $x ?>" value="<?= $x ?>">
-											<input type="hidden" name="amount_<?= $x ?>" value="<?= $row["product_price"] ?>">
-											<input type="hidden" name="quantity_<?= $x ?>" value="<?= $row["qty"] ?>">';
+												<input type="hidden" name="item_name_<?= $x ?>" value="<?= $row["product_title"] ?>">
+												<input type="hidden" name="item_number_<?= $x ?>" value="<?= $x ?>">
+												<input type="hidden" name="amount_<?= $x ?>" value="<?= $row["product_price"] ?>">
+												<input type="hidden" name="quantity_<?= $x ?>" value="<?= $row["qty"] ?>">';
 
 										<?php
+											}
 										}
 
 										?>

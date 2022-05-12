@@ -25,6 +25,7 @@ include "db.php";
 	<meta name="description" content="Shop powered by PrestaShop" />
 	<meta name="keywords" content="" />
 
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="alternate" href="index.html" hreflang="en-us" />
 	<link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/fr/" hreflang="fr-fr" />
 	<link rel="alternate" href="https://rubiktheme.com/demo/rb_davici_demo/de/" hreflang="de-de" />
