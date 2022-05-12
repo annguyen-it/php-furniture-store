@@ -172,6 +172,9 @@ if (isset($_POST["Common"])) {
 		//display cart item in dropdown menu
 		if (mysqli_num_rows($query) > 0) {
 			$n = 0;
+
+			echo "<ul class='cart-products'>";
+
 			while ($row = mysqli_fetch_array($query)) {
 				$n++;
 				$product_id = $row["product_id"];
@@ -180,17 +183,43 @@ if (isset($_POST["Common"])) {
 				$product_image = $row["product_image"];
 				$cart_item_id = $row["id"];
 				$qty = $row["qty"];
-				echo '
-					<div class="row">
-						<div class="col-md-3">' . $n . '</div>
-						<div class="col-md-3"><img class="img-responsive" src="product_images/' . $product_image . '" /></div>
-						<div class="col-md-3">' . $product_title . '</div>
-						<div class="col-md-3">' . CURRENCY . '' . $product_price . '</div>
-					</div>';
+
+				echo "<li>
+								<div class='cart-product-line no-gutters align-items-center'>
+									<span class='product-image media-middle'>
+										<a href='/ecommerce-app-h/product.php?id=$product_id'>
+											<img src='/ecommerce-app-h/product_images/$product_image' alt='$product_title' class='img-fluid'>
+										</a>
+							    </span>
+									<div class='product-info'>
+										<a class='product-name' href='/ecommerce-app-h/product.php?id=$product_id'>$product_title</a>
+										<div class='product-price-quantity'>
+											<span class='text-muted'><span class='qty'>$qty</span> x</span>
+											<span class='product-price'>" . CURRENCY . "<span class='price'>$product_price</span></span> 
+										</div>
+									</div>
+									<div class='remove-cart'>
+										<a class='remove-from-cart remove' rel='nofollow' href='#' remove_id='$product_id' title='remove from cart'>
+											<i class='fa fa-trash-o' aria-hidden='true'></i>
+										</a>
+									</div>
+								</div>
+							</li>";
 			}
-?>
-			<a style="float:right;" href="cart.php" class="btn btn-warning">Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
-<?php
+
+
+			echo "</ul>";
+			echo "<div class='cart-subtotals'>
+							<p class='cart-products-count'>There is $n item" . ($n == 1 ? 's' : '') . " in your cart.</p>
+							<div class='products clearfix'>
+								<span class='label'>Subtotal</span>
+								<span class='price-total value float-right net_total'></span>
+							</div>
+						</div>
+						<div class='cart-buttons text-center'>
+							<a rel='nofollow' class='btn btn-secondary btn-block' href='//rubiktheme.com/demo/rb_davici_demo/en/cart?action=show'>Cart</a>
+							<a href='//rubiktheme.com/demo/rb_davici_demo/en/order' class='btn btn-primary btn-block btn-lg'>Checkout</a>
+						</div>";
 			exit();
 		}
 	}
@@ -311,8 +340,5 @@ if (isset($_POST["updateCartItem"])) {
 		exit();
 	}
 }
-
-
-
 
 ?>
