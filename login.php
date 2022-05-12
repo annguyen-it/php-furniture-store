@@ -5,7 +5,7 @@ session_start();
 
 #Login script is begin here
 #If user given credential matches successfully with the data available in database then we will echo string login_success
-#login_success string will go back to called Anonymous funtion $("#login").click() 
+#login_success string will go back to called Anonymous function $("#login").click() 
 if(isset($_POST["email"]) && isset($_POST["password"])){
 	$email = mysqli_real_escape_string($con,$_POST["email"]);
 	$password = md5($_POST["password"]);

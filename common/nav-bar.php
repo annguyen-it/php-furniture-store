@@ -961,235 +961,258 @@
       <div class="my-account">
         <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
         <!-- TPL LOGIN -->
-        <div id="rb-login" class="rb-login popup-over">
-          <a href="javascript:void(0)" title="Login" class="align-items-center popup-title">
-            <i class="icon-login"></i>
-            <span>Login</span>
-          </a>
+        <?php
 
-          <div class="bg-over-lay"></div>
-          <div class="rb-dropdown rb-login-form rb-form-container dd-container dd-products dd-view popup-content">
-            <!-- <div class="close-popup"><i class="icon_close"></i></div> -->
-            <div class="close-menubar">
-              <span id="click_off"></span>
-            </div>
-            <div class="indent rb-indent">
-              <div class="title-wrap flex-container">
-                <h4 class="customer-form-tab login-tab active">
-                  <span>Sign In</span>
-                </h4>
+        if (!isset($_SESSION["uid"])) {
+        ?>
+          <div id="rb-login" class="rb-login popup-over">
+            <a href="javascript:void(0)" title="Login" class="align-items-center popup-title">
+              <i class="icon-login"></i>
+              <span>Login</span>
+            </a>
 
-                <!-- <h4>OR</h4> -->
-
-                <h4 class="customer-form-tab register-tab">
-                  <span>Register</span>
-                </h4>
+            <div class="bg-over-lay"></div>
+            <div class="rb-dropdown rb-login-form rb-form-container dd-container dd-products dd-view popup-content">
+              <!-- <div class="close-popup"><i class="icon_close"></i></div> -->
+              <div class="close-menubar">
+                <span id="click_off"></span>
               </div>
+              <div class="indent rb-indent">
+                <div class="title-wrap flex-container">
+                  <h4 class="customer-form-tab login-tab active">
+                    <span>Sign In</span>
+                  </h4>
 
-              <div class="form-wrap">
-                <form class="rb-customer-form active rb-form-login" onsubmit="return false" id="login" method="post">
-                  <div class="relative form-group">
-                    <div class="icon-true">
-                     <label for="email">Email</label>
-											<input type="email" class="form-control" name="email" id="email" required />
-                    </div>
-                  </div>
-                  <div class="relative form-group">
-                    <div class="input-group-dis js-parent-focus">
-                      <div class="icon-true relative">
-                      <label for="email">Password</label>
-											<input type="password" class="form-control js-child-focus js-visible-password" name="password" id="password" required />
+                  <!-- <h4>OR</h4> -->
+
+                  <h4 class="customer-form-tab register-tab">
+                    <span>Register</span>
+                  </h4>
+                </div>
+
+                <div class="form-wrap">
+                  <form class="rb-customer-form active rb-form-login" onsubmit="return false" id="login" method="POST">
+                    <div class="relative form-group">
+                      <div class="icon-true">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" required />
                       </div>
                     </div>
-                  </div>
-
-                  <div class="login-submit">
-                    <input type="hidden" name="submitLogin" value="1" />
-                    <input type="submit" class="btn btn-primary login-button" value="Login">
-                  </div>
-
-                  <a href="password-recovery.html" rel="nofollow">
-                    Forgot your password?
-                  </a>
-                  <a href="customer_registration.php?register=1" style="color:white; text-decoration:none;">Create Account Now</a>
-                </form>
-
-                <form action="https://rubiktheme.com/demo/rb_davici_demo/en/login?create_account=1?back=identity" class="rb-customer-form rb-form-register" method="POST">
-                  <input type="hidden" value="1" name="submitCreate" />
-                  <input type="hidden" value="0" name="newsletter" />
-                  <input type="hidden" value="0" name="optin" />
-                  <input type="hidden" value="" name="id_customer" />
-                  <input type="hidden" value="1" name="id_gender" />
-
-                  <div class="form-group relative">
-                    <div class="icon-true">
-                      <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
-                      <i class="material-icons">email</i>
-                    </div>
-                  </div>
-
-                  <div class="form-group relative">
-                    <div class="input-group-dis js-parent-focus">
-                      <div class="icon-true relative">
-                        <input class="form-control" name="password" placeholder="Password" type="password" value="" required="" pattern=".{5,}" />
-                        <i class="material-icons">vpn_key</i>
+                    <div class="relative form-group">
+                      <div class="input-group-dis js-parent-focus">
+                        <div class="icon-true relative">
+                          <label for="email">Password</label>
+                          <input type="password" class="form-control js-child-focus js-visible-password" name="password" id="password" required />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group relative">
-                    <div class="icon-true">
-                      <input class="form-control" name="firstname" type="text" value="" placeholder="First Name" required="" />
-                      <i class="material-icons">&#xE7FF;</i>
+
+                    <div class="login-submit">
+                      <input type="hidden" name="submitLogin" value="1" />
+                      <input type="submit" class="btn btn-primary login-button" value="Login">
                     </div>
-                  </div>
-                  <div class="form-group relative">
-                    <div class="icon-true">
-                      <input class="form-control" name="lastname" type="text" value="" placeholder="Last Name" required="" />
-                      <span class="focus-border"><i></i></span>
-                      <svg class="svgic input-icon">
-                        <use xlink:href="#si-account"></use>
-                      </svg>
+
+                    <a href="password-recovery.html" rel="nofollow">
+                      Forgot your password?
+                    </a>
+                    <a href="customer_registration.php?register=1" style="color:white; text-decoration:none;">Create Account Now</a>
+                  </form>
+
+                  <form class="rb-customer-form rb-form-register" onsubmit="return false" id="signup_form" method="POST">
+                    <input type="hidden" value="1" name="submitCreate" />
+                    <input type="hidden" value="0" name="newsletter" />
+                    <input type="hidden" value="0" name="optin" />
+                    <input type="hidden" value="" name="id_customer" />
+                    <input type="hidden" value="1" name="id_gender" />
+
+                    <div class="form-group relative">
+                      <div class="icon-true">
+                        <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
+                        <i class="material-icons">email</i>
+                      </div>
                     </div>
-                  </div>
-                  <div class="relative form-group rb-check-box">
-                    <input class="form-control" name="optin" id="optin" type="checkbox" value="1" />
-                    <label for="optin"> I agree to the </label>
-                  </div>
-                  <div class="relative form-group rb-check-box">
-                    <input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1" />
-                    <label for="newsletter">
-                      Sign up for our newsletter
-                    </label>
-                  </div>
-                  <button class="btn btn-primary form-control-submit register-button" type="submit" data-back="login2432.html">
-                    Register
-                  </button>
-                </form>
-              </div>
 
-              <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-              <!-- TPL LOGIN -->
-              <!-- End -->
+                    <div class="form-group relative">
+                      <div class="input-group-dis js-parent-focus">
+                        <div class="icon-true relative">
+                          <input class="form-control" name="password" placeholder="Password" type="password" value="" required="" pattern=".{5,}" />
+                          <i class="material-icons">vpn_key</i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group relative">
+                      <div class="icon-true">
+                        <input class="form-control" name="firstname" type="text" value="" placeholder="First Name" required="" />
+                        <i class="material-icons">&#xE7FF;</i>
+                      </div>
+                    </div>
+                    <div class="form-group relative">
+                      <div class="icon-true">
+                        <input class="form-control" name="lastname" type="text" value="" placeholder="Last Name" required="" />
+                        <span class="focus-border"><i></i></span>
+                        <svg class="svgic input-icon">
+                          <use xlink:href="#si-account"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="relative form-group rb-check-box">
+                      <input class="form-control" name="optin" id="optin" type="checkbox" value="1" />
+                      <label for="optin"> I agree to the </label>
+                    </div>
+                    <div class="relative form-group rb-check-box">
+                      <input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1" />
+                      <label for="newsletter">
+                        Sign up for our newsletter
+                      </label>
+                    </div>
+                    <button class="btn btn-primary form-control-submit register-button" type="submit" data-back="login2432.html">
+                      Register
+                    </button>
+                  </form>
+                </div>
 
-              <div class="rb-id-compare">
-                <a href="compare.html">
-                  <span class="rb-header-item">
-                    <i class="icon-random"></i>
-                    <span class="title">Compare</span>
-                    <span class="rb-compare-quantity rb-amount-inline">0</span>
-                  </span>
-                </a>
-              </div>
-              <!-- End -->
+                <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+                <!-- TPL LOGIN -->
+                <!-- End -->
 
-              <!-- TPL wishlist -->
-
-              <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-
-              <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-              <!-- TPL LOGIN -->
-              <!-- End -->
-
-              <!-- End -->
-
-              <!-- TPL wishlist -->
-              <div class="rb-id-wishlist">
-                <a href="login.html">
-                  <span class="rb-header-item">
-                    <i class="icon-heart"></i>
-                    <span class="title">Wishlist</span>
-                    <span class="rb-wishlist-quantity rb-amount-inline">0</span>
-                  </span>
-                </a>
-              </div>
-
-              <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-
-              <!-- begin module:ps_languageselector/ps_languageselector.tpl -->
-              <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
-
-              <div id="language_selector" class="d-inline-block">
-                <div class="language-selector dropdown js-dropdown">
-                  <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown" data-iso-code="en">
-                    <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" />
-                    English
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <div class="rb-id-compare">
+                  <a href="compare.html">
+                    <span class="rb-header-item">
+                      <i class="icon-random"></i>
+                      <span class="title">Compare</span>
+                      <span class="rb-compare-quantity rb-amount-inline">0</span>
+                    </span>
                   </a>
-                  <div class="dropdown-menu">
-                    <ul>
-                      <li class="current">
-                        <a href="index.html" rel="alternate" hreflang="en" class="dropdown-item">
-                          <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" data-iso-code="en" />
-                          <span class="lang-name">English</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://rubiktheme.com/demo/rb_davici_demo/fr/" rel="alternate" hreflang="fr" class="dropdown-item">
-                          <img src="./img/l/2.jpg" alt="Français" class="img-fluid lang-flag" data-iso-code="fr" />
-                          <span class="lang-name">Français</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://rubiktheme.com/demo/rb_davici_demo/de/" rel="alternate" hreflang="de" class="dropdown-item">
-                          <img src="./img/l/3.jpg" alt="Deutsch" class="img-fluid lang-flag" data-iso-code="de" />
-                          <span class="lang-name">Deutsch</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://rubiktheme.com/demo/rb_davici_demo/it/" rel="alternate" hreflang="it" class="dropdown-item">
-                          <img src="./img/l/4.jpg" alt="Italiano" class="img-fluid lang-flag" data-iso-code="it" />
-                          <span class="lang-name">Italiano</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://rubiktheme.com/demo/rb_davici_demo/es/" rel="alternate" hreflang="es" class="dropdown-item">
-                          <img src="./img/l/5.jpg" alt="Español" class="img-fluid lang-flag" data-iso-code="es" />
-                          <span class="lang-name">Español</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://rubiktheme.com/demo/rb_davici_demo/pl/" rel="alternate" hreflang="pl" class="dropdown-item">
-                          <img src="./img/l/6.jpg" alt="Polski" class="img-fluid lang-flag" data-iso-code="pl" />
-                          <span class="lang-name">Polski</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
-              </div>
-              <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
-              <!-- end module:ps_languageselector/ps_languageselector.tpl -->
+                <!-- End -->
 
-              <!-- begin module:ps_currencyselector/ps_currencyselector.tpl -->
-              <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
-              <div id="currency_selector" class="d-inline-block">
-                <div class="currency-selector dropdown js-dropdown d-inline-block">
-                  <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown">
-                    <i class="fa fa-money"></i>
-                    USD $
-                    <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                  <div class="dropdown-menu">
-                    <ul>
-                      <li>
-                        <a title="Euro" rel="nofollow" href="index6edc.html?SubmitCurrency=1&amp;id_currency=2" class="dropdown-item">
-                          EUR €
-                        </a>
-                      </li>
-                      <li class="current">
-                        <a title="US Dollar" rel="nofollow" href="indexe3c8.html?SubmitCurrency=1&amp;id_currency=1" class="dropdown-item">
-                          USD $
-                        </a>
-                      </li>
-                    </ul>
+                <!-- TPL wishlist -->
+
+                <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+
+                <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+                <!-- TPL LOGIN -->
+                <!-- End -->
+
+                <!-- End -->
+
+                <!-- TPL wishlist -->
+                <div class="rb-id-wishlist">
+                  <a href="login.html">
+                    <span class="rb-header-item">
+                      <i class="icon-heart"></i>
+                      <span class="title">Wishlist</span>
+                      <span class="rb-wishlist-quantity rb-amount-inline">0</span>
+                    </span>
+                  </a>
+                </div>
+
+                <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+
+                <!-- begin module:ps_languageselector/ps_languageselector.tpl -->
+                <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
+
+                <div id="language_selector" class="d-inline-block">
+                  <div class="language-selector dropdown js-dropdown">
+                    <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown" data-iso-code="en">
+                      <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" />
+                      English
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                      <ul>
+                        <li class="current">
+                          <a href="index.html" rel="alternate" hreflang="en" class="dropdown-item">
+                            <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" data-iso-code="en" />
+                            <span class="lang-name">English</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://rubiktheme.com/demo/rb_davici_demo/fr/" rel="alternate" hreflang="fr" class="dropdown-item">
+                            <img src="./img/l/2.jpg" alt="Français" class="img-fluid lang-flag" data-iso-code="fr" />
+                            <span class="lang-name">Français</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://rubiktheme.com/demo/rb_davici_demo/de/" rel="alternate" hreflang="de" class="dropdown-item">
+                            <img src="./img/l/3.jpg" alt="Deutsch" class="img-fluid lang-flag" data-iso-code="de" />
+                            <span class="lang-name">Deutsch</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://rubiktheme.com/demo/rb_davici_demo/it/" rel="alternate" hreflang="it" class="dropdown-item">
+                            <img src="./img/l/4.jpg" alt="Italiano" class="img-fluid lang-flag" data-iso-code="it" />
+                            <span class="lang-name">Italiano</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://rubiktheme.com/demo/rb_davici_demo/es/" rel="alternate" hreflang="es" class="dropdown-item">
+                            <img src="./img/l/5.jpg" alt="Español" class="img-fluid lang-flag" data-iso-code="es" />
+                            <span class="lang-name">Español</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://rubiktheme.com/demo/rb_davici_demo/pl/" rel="alternate" hreflang="pl" class="dropdown-item">
+                            <img src="./img/l/6.jpg" alt="Polski" class="img-fluid lang-flag" data-iso-code="pl" />
+                            <span class="lang-name">Polski</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
+                <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
+                <!-- end module:ps_languageselector/ps_languageselector.tpl -->
+
+                <!-- begin module:ps_currencyselector/ps_currencyselector.tpl -->
+                <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
+                <div id="currency_selector" class="d-inline-block">
+                  <div class="currency-selector dropdown js-dropdown d-inline-block">
+                    <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown">
+                      <i class="fa fa-money"></i>
+                      USD $
+                      <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu">
+                      <ul>
+                        <li>
+                          <a title="Euro" rel="nofollow" href="index6edc.html?SubmitCurrency=1&amp;id_currency=2" class="dropdown-item">
+                            EUR €
+                          </a>
+                        </li>
+                        <li class="current">
+                          <a title="US Dollar" rel="nofollow" href="indexe3c8.html?SubmitCurrency=1&amp;id_currency=1" class="dropdown-item">
+                            USD $
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
+                <!-- end module:ps_currencyselector/ps_currencyselector.tpl -->
               </div>
-              <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
-              <!-- end module:ps_currencyselector/ps_currencyselector.tpl -->
             </div>
           </div>
-        </div>
-        <!-- End -->
+          <!-- End -->
+        <?php
+        } else {
+        ?>
+          <div style="position:relative;">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-user"></span>
+              <?php echo "Hi, " . $_SESSION["name"]; ?>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="cart.php" style="text-decoration:none; color:black;"><span class="glyphicon glyphicon-shopping-cart"> Cart</a></li>
+              <li class="divider"></li>
+              <li><a href="customer_order.php" style="text-decoration:none; color:black;">Orders</a></li>
+              <li class="divider"></li>
+              <li><a href="logout.php" style="text-decoration:none; color:black;">Logout</a></li>
+            </ul>
+          </div>
+        <?php
+        }
+        ?>
 
         <!-- End -->
 
@@ -2204,234 +2227,256 @@
 
             <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
             <!-- TPL LOGIN -->
-            <div id="rb-login" class="rb-login popup-over">
-              <a href="javascript:void(0)" title="Login" class="align-items-center popup-title">
-                <i class="icon-login"></i>
-                <span>Login</span>
-              </a>
+            <?php
+            if (!isset($_SESSION["uid"])) {
+            ?>
+              <div id="rb-login" class="rb-login popup-over">
+                <a href="javascript:void(0)" title="Login" class="align-items-center popup-title">
+                  <i class="icon-login"></i>
+                  <span>Login</span>
+                </a>
 
-              <div class="bg-over-lay"></div>
-              <div class="rb-dropdown rb-login-form rb-form-container dd-container dd-products dd-view popup-content">
-                <!-- <div class="close-popup"><i class="icon_close"></i></div> -->
-                <div class="close-menubar">
-                  <span id="click_off"></span>
-                </div>
-                <div class="indent rb-indent">
-                  <div class="title-wrap flex-container">
-                    <h4 class="customer-form-tab login-tab active">
-                      <span>Sign In</span>
-                    </h4>
-
-                    <!-- <h4>OR</h4> -->
-
-                    <h4 class="customer-form-tab register-tab">
-                      <span>Register</span>
-                    </h4>
+                <div class="bg-over-lay"></div>
+                <div class="rb-dropdown rb-login-form rb-form-container dd-container dd-products dd-view popup-content">
+                  <!-- <div class="close-popup"><i class="icon_close"></i></div> -->
+                  <div class="close-menubar">
+                    <span id="click_off"></span>
                   </div>
+                  <div class="indent rb-indent">
+                    <div class="title-wrap flex-container">
+                      <h4 class="customer-form-tab login-tab active">
+                        <span>Sign In</span>
+                      </h4>
 
-                  <div class="form-wrap">
-                    <form class="rb-customer-form active rb-form-login" onsubmit="return false" id="login" method="post">
-                      <div class="relative form-group">
-                        <div class="icon-true">
-                          <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
-                          <i class="material-icons">email</i>
-                        </div>
-                      </div>
-                      <div class="relative form-group">
-                        <div class="input-group-dis js-parent-focus">
-                          <div class="icon-true relative">
-                            <input class="form-control js-child-focus js-visible-password" name="password" type="password" value="" placeholder="Password" required="" />
-                            <i class="material-icons">vpn_key</i>
+                      <!-- <h4>OR</h4> -->
+
+                      <h4 class="customer-form-tab register-tab">
+                        <span>Register</span>
+                      </h4>
+                    </div>
+
+                    <div class="form-wrap">
+                      <form class="rb-customer-form active rb-form-login" onsubmit="return false" id="login" method="post">
+                        <div class="relative form-group">
+                          <div class="icon-true">
+                            <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
+                            <i class="material-icons">email</i>
                           </div>
                         </div>
-                      </div>
-
-                      <div class="login-submit">
-                        <input type="hidden" name="submitLogin" value="1" />
-                        <input type="submit" class="btn btn-primary login-button" value="Login">
-                      </div>
-
-                      <a href="password-recovery.html" rel="nofollow">
-                        Forgot your password?
-                      </a>
-                    </form>
-
-                    <form action="https://rubiktheme.com/demo/rb_davici_demo/en/login?create_account=1?back=identity" class="rb-customer-form rb-form-register" method="POST">
-                      <input type="hidden" value="1" name="submitCreate" />
-                      <input type="hidden" value="0" name="newsletter" />
-                      <input type="hidden" value="0" name="optin" />
-                      <input type="hidden" value="" name="id_customer" />
-                      <input type="hidden" value="1" name="id_gender" />
-
-                      <div class="form-group relative">
-                        <div class="icon-true">
-                          <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
-                          <i class="material-icons">email</i>
-                        </div>
-                      </div>
-
-                      <div class="form-group relative">
-                        <div class="input-group-dis js-parent-focus">
-                          <div class="icon-true relative">
-                            <input class="form-control" name="password" placeholder="Password" type="password" value="" required="" pattern=".{5,}" />
-                            <i class="material-icons">vpn_key</i>
+                        <div class="relative form-group">
+                          <div class="input-group-dis js-parent-focus">
+                            <div class="icon-true relative">
+                              <input class="form-control js-child-focus js-visible-password" name="password" type="password" value="" placeholder="Password" required="" />
+                              <i class="material-icons">vpn_key</i>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group relative">
-                        <div class="icon-true">
-                          <input class="form-control" name="firstname" type="text" value="" placeholder="First Name" required="" />
-                          <i class="material-icons">&#xE7FF;</i>
+
+                        <div class="login-submit">
+                          <input type="hidden" name="submitLogin" value="1" />
+                          <input type="submit" class="btn btn-primary login-button" value="Login">
                         </div>
-                      </div>
-                      <div class="form-group relative">
-                        <div class="icon-true">
-                          <input class="form-control" name="lastname" type="text" value="" placeholder="Last Name" required="" />
-                          <span class="focus-border"><i></i></span>
-                          <svg class="svgic input-icon">
-                            <use xlink:href="#si-account"></use>
-                          </svg>
+
+                        <a href="password-recovery.html" rel="nofollow">
+                          Forgot your password?
+                        </a>
+                      </form>
+
+                      <form action="https://rubiktheme.com/demo/rb_davici_demo/en/login?create_account=1?back=identity" class="rb-customer-form rb-form-register" method="POST">
+                        <input type="hidden" value="1" name="submitCreate" />
+                        <input type="hidden" value="0" name="newsletter" />
+                        <input type="hidden" value="0" name="optin" />
+                        <input type="hidden" value="" name="id_customer" />
+                        <input type="hidden" value="1" name="id_gender" />
+
+                        <div class="form-group relative">
+                          <div class="icon-true">
+                            <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
+                            <i class="material-icons">email</i>
+                          </div>
                         </div>
-                      </div>
-                      <div class="relative form-group rb-check-box">
-                        <input class="form-control" name="optin" id="optin" type="checkbox" value="1" />
-                        <label for="optin"> I agree to the </label>
-                      </div>
-                      <div class="relative form-group rb-check-box">
-                        <input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1" />
-                        <label for="newsletter">
-                          Sign up for our newsletter
-                        </label>
-                      </div>
-                      <button class="btn btn-primary form-control-submit register-button" type="submit" data-back="login2432.html">
-                        Register
-                      </button>
-                    </form>
-                  </div>
 
-                  <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-                  <!-- TPL LOGIN -->
-                  <!-- End -->
+                        <div class="form-group relative">
+                          <div class="input-group-dis js-parent-focus">
+                            <div class="icon-true relative">
+                              <input class="form-control" name="password" placeholder="Password" type="password" value="" required="" pattern=".{5,}" />
+                              <i class="material-icons">vpn_key</i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group relative">
+                          <div class="icon-true">
+                            <input class="form-control" name="firstname" type="text" value="" placeholder="First Name" required="" />
+                            <i class="material-icons">&#xE7FF;</i>
+                          </div>
+                        </div>
+                        <div class="form-group relative">
+                          <div class="icon-true">
+                            <input class="form-control" name="lastname" type="text" value="" placeholder="Last Name" required="" />
+                            <span class="focus-border"><i></i></span>
+                            <svg class="svgic input-icon">
+                              <use xlink:href="#si-account"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="relative form-group rb-check-box">
+                          <input class="form-control" name="optin" id="optin" type="checkbox" value="1" />
+                          <label for="optin"> I agree to the </label>
+                        </div>
+                        <div class="relative form-group rb-check-box">
+                          <input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1" />
+                          <label for="newsletter">
+                            Sign up for our newsletter
+                          </label>
+                        </div>
+                        <button class="btn btn-primary form-control-submit register-button" type="submit" data-back="login2432.html">
+                          Register
+                        </button>
+                      </form>
+                    </div>
 
-                  <div class="rb-id-compare">
-                    <a href="compare.html">
-                      <span class="rb-header-item">
-                        <i class="icon-random"></i>
-                        <span class="title">Compare</span>
-                        <span class="rb-compare-quantity rb-amount-inline">0</span>
-                      </span>
-                    </a>
-                  </div>
-                  <!-- End -->
+                    <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+                    <!-- TPL LOGIN -->
+                    <!-- End -->
 
-                  <!-- TPL wishlist -->
-
-                  <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-
-                  <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-                  <!-- TPL LOGIN -->
-                  <!-- End -->
-
-                  <!-- End -->
-
-                  <!-- TPL wishlist -->
-                  <div class="rb-id-wishlist">
-                    <a href="login.html">
-                      <span class="rb-header-item">
-                        <i class="icon-heart"></i>
-                        <span class="title">Wishlist</span>
-                        <span class="rb-wishlist-quantity rb-amount-inline">0</span>
-                      </span>
-                    </a>
-                  </div>
-
-                  <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
-
-                  <!-- begin module:ps_languageselector/ps_languageselector.tpl -->
-                  <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
-
-                  <div id="language_selector" class="d-inline-block">
-                    <div class="language-selector dropdown js-dropdown">
-                      <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown" data-iso-code="en">
-                        <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" />
-                        English
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    <div class="rb-id-compare">
+                      <a href="compare.html">
+                        <span class="rb-header-item">
+                          <i class="icon-random"></i>
+                          <span class="title">Compare</span>
+                          <span class="rb-compare-quantity rb-amount-inline">0</span>
+                        </span>
                       </a>
-                      <div class="dropdown-menu">
-                        <ul>
-                          <li class="current">
-                            <a href="index.html" rel="alternate" hreflang="en" class="dropdown-item">
-                              <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" data-iso-code="en" />
-                              <span class="lang-name">English</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://rubiktheme.com/demo/rb_davici_demo/fr/" rel="alternate" hreflang="fr" class="dropdown-item">
-                              <img src="./img/l/2.jpg" alt="Français" class="img-fluid lang-flag" data-iso-code="fr" />
-                              <span class="lang-name">Français</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://rubiktheme.com/demo/rb_davici_demo/de/" rel="alternate" hreflang="de" class="dropdown-item">
-                              <img src="./img/l/3.jpg" alt="Deutsch" class="img-fluid lang-flag" data-iso-code="de" />
-                              <span class="lang-name">Deutsch</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://rubiktheme.com/demo/rb_davici_demo/it/" rel="alternate" hreflang="it" class="dropdown-item">
-                              <img src="./img/l/4.jpg" alt="Italiano" class="img-fluid lang-flag" data-iso-code="it" />
-                              <span class="lang-name">Italiano</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://rubiktheme.com/demo/rb_davici_demo/es/" rel="alternate" hreflang="es" class="dropdown-item">
-                              <img src="./img/l/5.jpg" alt="Español" class="img-fluid lang-flag" data-iso-code="es" />
-                              <span class="lang-name">Español</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://rubiktheme.com/demo/rb_davici_demo/pl/" rel="alternate" hreflang="pl" class="dropdown-item">
-                              <img src="./img/l/6.jpg" alt="Polski" class="img-fluid lang-flag" data-iso-code="pl" />
-                              <span class="lang-name">Polski</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
                     </div>
-                  </div>
-                  <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
-                  <!-- end module:ps_languageselector/ps_languageselector.tpl -->
+                    <!-- End -->
 
-                  <!-- begin module:ps_currencyselector/ps_currencyselector.tpl -->
-                  <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
-                  <div id="currency_selector" class="d-inline-block">
-                    <div class="currency-selector dropdown js-dropdown d-inline-block">
-                      <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown">
-                        <i class="fa fa-money"></i>
-                        USD $
-                        <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                      <div class="dropdown-menu">
-                        <ul>
-                          <li>
-                            <a title="Euro" rel="nofollow" href="index6edc.html?SubmitCurrency=1&amp;id_currency=2" class="dropdown-item">
-                              EUR €
-                            </a>
-                          </li>
-                          <li class="current">
-                            <a title="US Dollar" rel="nofollow" href="indexe3c8.html?SubmitCurrency=1&amp;id_currency=1" class="dropdown-item">
-                              USD $
-                            </a>
-                          </li>
-                        </ul>
+                    <!-- TPL wishlist -->
+
+                    <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+
+                    <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+                    <!-- TPL LOGIN -->
+                    <!-- End -->
+
+                    <!-- End -->
+
+                    <!-- TPL wishlist -->
+                    <div class="rb-id-wishlist">
+                      <a href="login.html">
+                        <span class="rb-header-item">
+                          <i class="icon-heart"></i>
+                          <span class="title">Wishlist</span>
+                          <span class="rb-wishlist-quantity rb-amount-inline">0</span>
+                        </span>
+                      </a>
+                    </div>
+
+                    <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/rbthemefunction/views/templates/hook/rb-top-compare.tpl -->
+
+                    <!-- begin module:ps_languageselector/ps_languageselector.tpl -->
+                    <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
+
+                    <div id="language_selector" class="d-inline-block">
+                      <div class="language-selector dropdown js-dropdown">
+                        <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown" data-iso-code="en">
+                          <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" />
+                          English
+                          <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                          <ul>
+                            <li class="current">
+                              <a href="index.html" rel="alternate" hreflang="en" class="dropdown-item">
+                                <img src="./img/l/1.jpg" alt="English" class="img-fluid lang-flag" data-iso-code="en" />
+                                <span class="lang-name">English</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://rubiktheme.com/demo/rb_davici_demo/fr/" rel="alternate" hreflang="fr" class="dropdown-item">
+                                <img src="./img/l/2.jpg" alt="Français" class="img-fluid lang-flag" data-iso-code="fr" />
+                                <span class="lang-name">Français</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://rubiktheme.com/demo/rb_davici_demo/de/" rel="alternate" hreflang="de" class="dropdown-item">
+                                <img src="./img/l/3.jpg" alt="Deutsch" class="img-fluid lang-flag" data-iso-code="de" />
+                                <span class="lang-name">Deutsch</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://rubiktheme.com/demo/rb_davici_demo/it/" rel="alternate" hreflang="it" class="dropdown-item">
+                                <img src="./img/l/4.jpg" alt="Italiano" class="img-fluid lang-flag" data-iso-code="it" />
+                                <span class="lang-name">Italiano</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://rubiktheme.com/demo/rb_davici_demo/es/" rel="alternate" hreflang="es" class="dropdown-item">
+                                <img src="./img/l/5.jpg" alt="Español" class="img-fluid lang-flag" data-iso-code="es" />
+                                <span class="lang-name">Español</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://rubiktheme.com/demo/rb_davici_demo/pl/" rel="alternate" hreflang="pl" class="dropdown-item">
+                                <img src="./img/l/6.jpg" alt="Polski" class="img-fluid lang-flag" data-iso-code="pl" />
+                                <span class="lang-name">Polski</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
+                    <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_languageselector/ps_languageselector.tpl -->
+                    <!-- end module:ps_languageselector/ps_languageselector.tpl -->
+
+                    <!-- begin module:ps_currencyselector/ps_currencyselector.tpl -->
+                    <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
+                    <div id="currency_selector" class="d-inline-block">
+                      <div class="currency-selector dropdown js-dropdown d-inline-block">
+                        <a href="javascript:void(0)" class="expand-more" data-toggle="dropdown">
+                          <i class="fa fa-money"></i>
+                          USD $
+                          <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu">
+                          <ul>
+                            <li>
+                              <a title="Euro" rel="nofollow" href="index6edc.html?SubmitCurrency=1&amp;id_currency=2" class="dropdown-item">
+                                EUR €
+                              </a>
+                            </li>
+                            <li class="current">
+                              <a title="US Dollar" rel="nofollow" href="indexe3c8.html?SubmitCurrency=1&amp;id_currency=1" class="dropdown-item">
+                                USD $
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
+                    <!-- end module:ps_currencyselector/ps_currencyselector.tpl -->
                   </div>
-                  <!-- end /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_currencyselector/ps_currencyselector.tpl -->
-                  <!-- end module:ps_currencyselector/ps_currencyselector.tpl -->
                 </div>
               </div>
-            </div>
-            <!-- End -->
+              <!-- End -->
+            <?php
+            } else {
+            ?>
+              <div style="position:relative;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-user"></span>
+                  <?php echo "Hi, " . $_SESSION["name"]; ?>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="cart.php" style="text-decoration:none; color:black;"><span class="glyphicon glyphicon-shopping-cart"> Cart</a></li>
+                  <li class="divider"></li>
+                  <li><a href="customer_order.php" style="text-decoration:none; color:black;">Orders</a></li>
+                  <li class="divider"></li>
+                  <li><a href="logout.php" style="text-decoration:none; color:black;">Logout</a></li>
+                </ul>
+              </div>
+            <?php
+            }
+            ?>
 
             <!-- End -->
 
