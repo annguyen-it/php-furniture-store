@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$("body").delegate(".category", "click", function (event) {
+	$("body").on('click', ".category", function (event) {
 		$("#get_product").html("<h3>Loading...</h3>");
 		event.preventDefault();
 		var cid = $(this).attr('cid');
@@ -7,7 +7,7 @@ $(document).ready(function () {
 		$.ajax({
 			url: "action.php",
 			method: "POST",
-			data: { get_seleted_Category: 1, cat_id: cid },
+			data: { get_selected_Category: 1, cat_id: cid },
 			success: function (data) {
 				$("#get_product").html(data);
 				if ($("body").width() < 480) {
@@ -20,7 +20,7 @@ $(document).ready(function () {
 	/*	when page is load successfully then there is a list of brands when user click on brand we will get brand id and 
 		according to brand id we will show products
 	*/
-	$("body").delegate(".selectBrand", "click", function (event) {
+	$("body").on('click', ".selectBrand", function (event) {
 		event.preventDefault();
 		$("#get_product").html("<h3>Loading...</h3>");
 		var bid = $(this).attr('bid');
@@ -42,7 +42,7 @@ $(document).ready(function () {
 		given string and with the help of sql query we will match user given string to our database keywords column then matched product 
 		we will show 
 	*/
-	$("#search_btn").click(function () {
+	$("#search_btn").on('click', function () {
 		$("#get_product").html("<h3>Loading...</h3>");
 		var keyword = $("#search").val();
 		if (keyword != "") {
@@ -104,14 +104,13 @@ $(document).ready(function () {
 				} else {
 					$("#signup_msg").html(data);
 				}
-
 			}
 		});
 	});
 	//Get User Information before checkout end here
 
 	//Add Product into Cart
-	$("body").delegate("#product", "click", function (event) {
+	$("body").on('click', "#product", function (event) {
 		var pid = $(this).attr("pid");
 		event.preventDefault();
 		$(".overlay").show();
@@ -128,7 +127,7 @@ $(document).ready(function () {
 		});
 	});
 	//Add Product into Cart End Here
-	//Count user cart items funtion
+	//Count user cart items function
 	count_item();
 	function count_item() {
 		$.ajax({
@@ -140,7 +139,7 @@ $(document).ready(function () {
 			}
 		});
 	}
-	//Count user cart items funtion end
+	//Count user cart items function end
 
 	//Fetch Cart item from Database to dropdown menu
 	getCartItem();
@@ -158,13 +157,13 @@ $(document).ready(function () {
 	//Fetch Cart item from Database to dropdown menu
 
 	/*
-		Whenever user change qty we will immediate update their total amount by using keyup funtion
+		Whenever user change qty we will immediate update their total amount by using keyup function
 		but whenever user put something(such as ?''"",.()''etc) other than number then we will make qty=1
 		if user put qty 0 or less than 0 then we will again make it 1 qty=1
-		('.total').each() this is loop funtion repeat for class .total and in every repetation we will perform sum operation of class .total value 
+		('.total').each() this is loop function repeat for class .total and in every repetition we will perform sum operation of class .total value 
 		and then show the result into class .net_total
 	*/
-	$("body").delegate(".qty", "keyup", function (event) {
+	$("body").on("keyup", ".qty", function (event) {
 		event.preventDefault();
 		var row = $(this).parent().parent();
 		var price = row.find('.price').val();
@@ -190,7 +189,7 @@ $(document).ready(function () {
 		whenever user click on .remove class we will take product id of that row 
 		and send it to action.php to perform product removal operation
 	*/
-	$("body").delegate(".remove", "click", function (event) {
+	$("body").on('click', ".remove", function (event) {
 		var remove = $(this).parent().parent().parent();
 		var remove_id = remove.find(".remove").attr("remove_id");
 		$.ajax({
@@ -205,9 +204,9 @@ $(document).ready(function () {
 	});
 	/*
 		whenever user click on .update class we will take product id of that row 
-		and send it to action.php to perform product qty updation operation
+		and send it to action.php to perform product qty update operation
 	*/
-	$("body").delegate(".update", "click", function (event) {
+	$("body").on('click', ".update", function (event) {
 		var update = $(this).parent().parent().parent();
 		var update_id = update.find(".update").attr("update_id");
 		var qty = update.find(".qty").val();
@@ -227,10 +226,11 @@ $(document).ready(function () {
 	/*
 		checkOutDetails() function work for two purposes
 		First it will enable php isset($_POST["Common"]) in action.php page and inside that
-		there is two isset funtion which is isset($_POST["getCartItem"]) and another one is isset($_POST["checkOutDetials"])
+		there is two isset function which is isset($_POST["getCartItem"]) and another one is isset($_POST["checkOutDetails"])
 		getCartItem is used to show the cart item into dropdown menu 
 		checkOutDetails is used to show cart item into Cart.php page
 	*/
+	checkOutDetails();
 	function checkOutDetails() {
 		$('.overlay').show();
 		$.ajax({
@@ -245,7 +245,7 @@ $(document).ready(function () {
 		});
 	}
 	/*
-		net_total function is used to calcuate total amount of cart item
+		net_total function is used to calculate total amount of cart item
 	*/
 	function net_total() {
 		var net_total = 0;
@@ -263,7 +263,7 @@ $(document).ready(function () {
 
 	//remove product from cart
 
-	$("body").delegate("#page", "click", function () {
+	$("body").on('click', "#page", function () {
 		var pn = $(this).attr("page");
 		$.ajax({
 			url: "action.php",

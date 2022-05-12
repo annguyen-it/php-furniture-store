@@ -3,7 +3,7 @@
     <div class="thumbnail-container">
       <div class="product-image">
         <a href="./product.php?id=<?= $pro_id ?>" class="thumbnail product-thumbnail">
-          <img alt="Design Living Room Sofa" class="img-fluid rb-image image-cover" src="product_images/<?= $pro_image ?>" data-full-size-image-url="./24-thickbox_default/design-living-room-sofa.jpg" loading="lazy" />
+          <img alt="<?= $pro_title ?>" class="img-fluid rb-image image-cover" src="product_images/<?= $pro_image ?>" data-full-size-image-url="./24-thickbox_default/design-living-room-sofa.jpg" loading="lazy" />
 
           <div class="product-hover">
             <img class="img-fluid rb-image image-hover" src="./166-home_default/design-living-room-sofa.jpg" title="Design Living Room Sofa" width="700" height="700" loading="lazy" />
@@ -60,7 +60,7 @@
 
           <div class="product-add-cart">
             <!-- begin modules/rbthemefunction/views/templates/hook/rb-add-to-cart.tpl -->
-            <form action="https://rubiktheme.com/demo/rb_davici_demo/en/cart" method="post" class="add-to-cart-or-refresh">
+            <form>
               <input type="hidden" name="token" value="bf0ba928fbfcc103ff31ff1e6c6b511b" />
               <input type="hidden" name="id_product" value="1" class="product_page_product_id" />
               <input type="hidden" name="qty" value="1" />
@@ -70,8 +70,7 @@
                 <div class="product-quantity">
                   <div class="add">
                     <button class="btn rb-btn-product add-to-cart" title="Add to cart" data-button-action="add-to-cart" type="submit">
-                      Add To
-                      Cart
+                      Add To Cart
                     </button>
 
                     <span class="product-availability hidden">
@@ -159,7 +158,7 @@
         <!-- end module:productcomments/views/templates/hook/product-list-reviews.tpl -->
 
         <h3 class="h3 product-title">
-          <a href="outdoor/1-1-design-living-room-sofa.html#/1-size-s/8-color-white">
+          <a href="./product.php?id=<?= $pro_id ?>">
             <?= $pro_title ?>
           </a>
         </h3>

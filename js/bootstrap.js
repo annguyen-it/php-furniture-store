@@ -937,7 +937,7 @@ if (typeof jQuery === 'undefined') {
     if (this.options.remote) {
       this.$element
         .find('.modal-content')
-        .load(this.options.remote, $.proxy(function () {
+        .on('load',this.options.remote, $.proxy(function () {
           this.$element.trigger('loaded.bs.modal')
         }, this))
     }
@@ -2059,9 +2059,9 @@ if (typeof jQuery === 'undefined') {
   // ====================
 
   var Tab = function (element) {
-    // jscs:disable requireDollarBeforejQueryAssignment
+    // jscs:disable requireDollarBeforeJQueryAssignment
     this.element = $(element)
-    // jscs:enable requireDollarBeforejQueryAssignment
+    // jscs:enable requireDollarBeforeJQueryAssignment
   }
 
   Tab.VERSION = '3.3.6'
