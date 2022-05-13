@@ -280,7 +280,9 @@ class Products
 	public function deleteProduct($pid = null)
 	{
 		if ($pid != null) {
-			$q = $this->con->query("DELETE FROM products WHERE product_id = '$pid'");
+			$q = $this->con->query("DELETE FROM products WHERE product_id = $pid");
+			$q = $this->con->query("DELETE FROM product_image WHERE product_id = $pid");
+
 			if ($q) {
 				return ['status' => 202, 'message' => 'Product removed from stocks'];
 			} else {
