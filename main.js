@@ -150,6 +150,7 @@ $(document).ready(function () {
 			data: { Common: 1, getCartItem: 1 },
 			success: function (data) {
 				$("#cart_product").html(data);
+				net_total();
 			}
 		});
 	}
@@ -251,13 +252,14 @@ $(document).ready(function () {
 		var net_total = 0;
 		$('.qty').each(function () {
 			var row = $(this).parent().parent();
-			var price = row.find('.price').val();
-			var total = price * $(this).val() - 0;
-			row.find('.total').val(total);
+			var price = row.find('.price').text();
+			var total = price * $(this).text() - 0;
+			net_total += total;
+			// row.find('.total').val(total);
 		});
-		$('.total').each(function () {
-			net_total += ($(this).val() - 0);
-		});
+		// $('.total').each(function () {
+		// 	net_total += ($(this).val() - 0);
+		// });
 		$('.net_total').html("Total : " + CURRENCY + " " + net_total);
 	}
 

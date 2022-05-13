@@ -423,6 +423,9 @@ if ($query && mysqli_num_rows($run_query) > 0) {
     }
   </style>
 
+  <script>
+    var CURRENCY = '<?php echo CURRENCY; ?>';
+  </script>
   <script src="js/jquery2.js"></script>
 </head>
 
@@ -558,7 +561,7 @@ if ($query && mysqli_num_rows($run_query) > 0) {
 
                           <div class="product-quantity clearfix">
                             <div class="add">
-                              <button class="btn btn-primary add-to-cart" pid="<?= $pro_id ?>" style="float:right;" id="product">
+                              <button class="btn btn-primary add-to-cart" pid="<?= $pid ?>" style="float:right;" id="product">
                                 Add to cart
                               </button>
                               <div class="page-loading-overlay add-to-cart-loading"></div>
@@ -943,9 +946,6 @@ if ($query && mysqli_num_rows($run_query) > 0) {
 
   <script type="text/javascript" src="./main.js"></script>
   <script type="text/javascript" src="./themes/rb_davici/assets/cache/bottom-eff46e38.js"></script>
-  <script>
-    var CURRENCY = '<?php echo CURRENCY; ?>';
-  </script>
 </body>
 
 </html>
