@@ -7,4 +7,4 @@ if (!defined('USER')) define('USER', $ini_array['USER'] ?? 'root');
 if (!defined('PASSWORD')) define('PASSWORD', $ini_array['PASSWORD'] ?? '');
 if (!defined('DATABASE_NAME')) define('DATABASE_NAME', 'ecommerceapp');
 
-if (!defined('CURRENCY')) define('CURRENCY', 'Rs');
+if (!defined('CURRENCY')) define('CURRENCY', '$');

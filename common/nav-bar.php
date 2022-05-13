@@ -1019,12 +1019,6 @@
                   </form>
 
                   <form class="rb-customer-form rb-form-register" onsubmit="return false" id="signup_form" method="POST">
-                    <input type="hidden" value="1" name="submitCreate" />
-                    <input type="hidden" value="0" name="newsletter" />
-                    <input type="hidden" value="0" name="optin" />
-                    <input type="hidden" value="" name="id_customer" />
-                    <input type="hidden" value="1" name="id_gender" />
-
                     <div class="form-group relative">
                       <div class="icon-true">
                         <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
@@ -1042,30 +1036,20 @@
                     </div>
                     <div class="form-group relative">
                       <div class="icon-true">
-                        <input class="form-control" name="firstname" type="text" value="" placeholder="First Name" required="" />
+                        <input class="form-control" name="f_name" type="text" value="" placeholder="First name" required="" />
                         <i class="material-icons">&#xE7FF;</i>
                       </div>
                     </div>
                     <div class="form-group relative">
                       <div class="icon-true">
-                        <input class="form-control" name="lastname" type="text" value="" placeholder="Last Name" required="" />
+                        <input class="form-control" name="l_name" type="text" value="" placeholder="Last name" required="" />
                         <span class="focus-border"><i></i></span>
                         <svg class="svgic input-icon">
                           <use xlink:href="#si-account"></use>
                         </svg>
                       </div>
                     </div>
-                    <div class="relative form-group rb-check-box">
-                      <input class="form-control" name="optin" id="optin" type="checkbox" value="1" />
-                      <label for="optin"> I agree to the </label>
-                    </div>
-                    <div class="relative form-group rb-check-box">
-                      <input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1" />
-                      <label for="newsletter">
-                        Sign up for our newsletter
-                      </label>
-                    </div>
-                    <button class="btn btn-primary form-control-submit register-button" type="submit" data-back="login2432.html">
+                    <button class="btn btn-primary form-control-submit register-button" type="submit">
                       Register
                     </button>
                   </form>
@@ -2282,54 +2266,58 @@
                         </a>
                       </form>
 
-                      <form action="https://rubiktheme.com/demo/rb_davici_demo/en/login?create_account=1?back=identity" class="rb-customer-form rb-form-register" method="POST">
-                        <input type="hidden" value="1" name="submitCreate" />
-                        <input type="hidden" value="0" name="newsletter" />
-                        <input type="hidden" value="0" name="optin" />
-                        <input type="hidden" value="" name="id_customer" />
-                        <input type="hidden" value="1" name="id_gender" />
-
+                      <form class="rb-customer-form rb-form-register" onsubmit="return false" id="signup_form" method="POST">
                         <div class="form-group relative">
                           <div class="icon-true">
                             <input class="form-control" name="email" type="email" value="" placeholder="Email" required="" />
-                            <i class="material-icons">email</i>
                           </div>
                         </div>
-
                         <div class="form-group relative">
                           <div class="input-group-dis js-parent-focus">
                             <div class="icon-true relative">
                               <input class="form-control" name="password" placeholder="Password" type="password" value="" required="" pattern=".{5,}" />
-                              <i class="material-icons">vpn_key</i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group relative">
+                          <div class="input-group-dis js-parent-focus">
+                            <div class="icon-true relative">
+                              <input class="form-control" name="repassword" placeholder="Confirm password" type="password" value="" required="" pattern=".{5,}" />
                             </div>
                           </div>
                         </div>
                         <div class="form-group relative">
                           <div class="icon-true">
-                            <input class="form-control" name="firstname" type="text" value="" placeholder="First Name" required="" />
-                            <i class="material-icons">&#xE7FF;</i>
+                            <input class="form-control" name="f_name" type="text" value="" placeholder="First name" required="" />
                           </div>
                         </div>
                         <div class="form-group relative">
                           <div class="icon-true">
-                            <input class="form-control" name="lastname" type="text" value="" placeholder="Last Name" required="" />
-                            <span class="focus-border"><i></i></span>
-                            <svg class="svgic input-icon">
-                              <use xlink:href="#si-account"></use>
-                            </svg>
+                            <input class="form-control" name="l_name" type="text" value="" placeholder="Last name" required="" />
                           </div>
                         </div>
-                        <div class="relative form-group rb-check-box">
-                          <input class="form-control" name="optin" id="optin" type="checkbox" value="1" />
-                          <label for="optin"> I agree to the </label>
+                        <div class="form-group relative">
+                          <div class="input-group-dis js-parent-focus">
+                            <div class="icon-true relative">
+                              <input class="form-control" name="mobile" placeholder="Mobile" type="tel" value="" required="" />
+                            </div>
+                          </div>
                         </div>
-                        <div class="relative form-group rb-check-box">
-                          <input class="form-control" name="newsletter" id="newsletter" type="checkbox" value="1" />
-                          <label for="newsletter">
-                            Sign up for our newsletter
-                          </label>
+                        <div class="form-group relative">
+                          <div class="input-group-dis js-parent-focus">
+                            <div class="icon-true relative">
+                              <input class="form-control" name="address1" placeholder="Address 1" type="text" value="" required="" />
+                            </div>
+                          </div>
                         </div>
-                        <button class="btn btn-primary form-control-submit register-button" type="submit" data-back="login2432.html">
+                        <div class="form-group relative">
+                          <div class="input-group-dis js-parent-focus">
+                            <div class="icon-true relative">
+                              <input class="form-control" name="address2" placeholder="Address 2" type="text" value="" required="" />
+                            </div>
+                          </div>
+                        </div>
+                        <button class="btn btn-primary form-control-submit register-button" type="submit">
                           Register
                         </button>
                       </form>
@@ -2526,7 +2514,9 @@
             <!-- begin /var/www/html/demo/rb_davici_demo/themes/rb_davici/modules/ps_shoppingcart/ps_shoppingcart.tpl -->
             <div id="blockcart" class="blockcart cart-preview" data-refresh-url="//rubiktheme.com/demo/rb_davici_demo/en/module/ps_shoppingcart/ajax">
               <a id="cart-toogle" class="cart-toogle header-btn header-cart-btn" href="javascript:void(0)" data-toggle="dropdown" data-display="static" aria-label="Shopping cart link containing 0 product(s)">
-                <i class="icon-bag icon" aria-hidden="true"><span class="cart-products-count-btn">0</span></i>
+                <i class="icon-bag icon" aria-hidden="true">
+                  <span class="cart-products-count-btn badge">0</span>
+                </i>
                 <span class="info-wrapper">
                   <span class="title">Cart</span>
                   <span class="cart-toggle-details">
@@ -2544,7 +2534,10 @@
                     </button>
                     <span class="modal-title">Your cart</span>
                   </div>
-                  <span class="no-items">There are no more items in your cart</span>
+
+                  <div class="cart-content" id="cart_product">
+                    <span class="no-items">There are no more items in your cart</span>
+                  </div>
                 </div>
               </div>
               <div class="bg-over-lay"></div>
