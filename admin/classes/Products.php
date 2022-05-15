@@ -303,7 +303,7 @@ class Products
 				return ['status' => 202, 'message' => 'Failed to run query'];
 			}
 		} else {
-			return ['status' => 303, 'message' => 'Invalid cattegory id'];
+			return ['status' => 303, 'message' => 'Invalid category id'];
 		}
 	}
 
